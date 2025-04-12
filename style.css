@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* text-align: justify; */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    border-radius: 5px;
+    background-color: #a0aecd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1);
+    box-shadow: 0px 10px 50px #a0aecd;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.nav-list {
+    display: flex;
+    gap: 30px
+}
+
+
+.ancher1 {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.ancher1:hover {
+    color: aquamarine;
+    transition: color 0.3s ease;
+}
+
+
+.main_art {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 0px 80px 0px 80px;
+}
+
+section {
+    scroll-margin-top: 100px;
+    height: auto;
+}
+
+section+hr {
+    margin:10px;
+}
+
+section .heading:first-child {
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+.home-main {
+    height: 500px;
+    width: 100%;
+    display: flex;
+}
+
+.home-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.link {
+    display: flex;
+    gap: 25px;
+}
+
+.link a {
+    color: #a4b5db;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.home-description {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article {
+    border: 1px solid lightblue;
+    background-color: #dfe9ff;
+    padding: 15px;
+    border-radius: 30px;
+    margin: 10px 0px;
+    line-height: 22px;
+    text-align: justify;
+}
+
+.intern {
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+.intern_left {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.intern_right {
+    width: 40%;
+    padding: 10px;
+}
+
+.intern_right aside {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,50%);
+}
+
+.intern_right aside .box {
+    padding: 5px;
+    height: 150px;
+}
+.intern_right aside div>img{
+    height: 100%;
+    width: 100%;
+}
+
+.box {
+    border: 1px solid black;
+    border-radius: 1%;
+    height: 120px;
+    margin: 5px;
+}
+
+.project-list h3 {
+    text-transform: uppercase;
+    font-weight: lighter;
+    text-decoration: underline;
+    line-height: 30px;
+    text-align: justify;
+}
+
+
+
+@media screen and (max-width:767px) {
+
+    .main_art {
+        padding: 0px 30px 0px 30px;
+    }
+
+    .home-main {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+
+    .home-content {
+        width: 100%;
+    }
+
+    .home-description {
+        width: 100%;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .intern {
+        display: block;
+    }
+
+    .intern_left {
+        width: 100%;
+    }
+
+    .intern_right {
+        width: 100%;
+    }
+
+    .intern_right aside {
+        width: 100%;
+        display: flex;
+        flex-wrap:wrap;
+        margin: auto;
+        /* justify-content: center; */
+        /* display: grid;
+        grid-template-columns: repeat(auto-fill,100%); */
+    }
+
+    .box {
+        width: 320px;
+        height: 200px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#form {
+    justify-items: center;
+}
+
+/* decendent(pesudo class) (peudo elements)  */
+/* tr td:first-child{
+    background-color: aqua;
+} */
+
+input,
+textarea {
+    width: 300px;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.submit {
+    height: 50px;
+    align-content: center;
+}
+
+/* using not selector to avoid the height changes  */
+input,
+textarea:not(#Message) {
+    height: 30px;
+}
+
+.footer {
+    height: 50px;
+    background-color: #a0aecd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1);
+    box-shadow: 0px 10px 50px #a0aecd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-text {
+    box-shadow: 10px 10px 50px #a4b5db;
+    font-weight: bolder;
+    font-style: italic;
+    letter-spacing: 5px;
+}

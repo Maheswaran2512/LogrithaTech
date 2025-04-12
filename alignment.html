@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aligmentt</title>
+    <style>
+        #flex_dir_row {
+            border: 1px double red;
+            display: flex;
+            /* flex-direction: row; default*/
+        }
+
+        #flex_dir_row_rev {
+            border: 1px double red;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        #flex_dir_col {
+            border: 1px double red;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #flex_dir_col_rev {
+            border: 1px double red;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .direction {
+            border: 1px dotted blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- flex direction  -->
+    <h1>flex_direction</h1>
+    <section id="flex_dir_row">
+        <!-- div.direction*5 -->
+        <div class="direction">area 1</div>
+        <div class="direction">area 2</div>
+        <div class="direction">area 3</div>
+        <div class="direction">area 4</div>
+    </section>
+    <section id="flex_dir_row_rev">
+        <!-- div.direction*5 -->
+        <div class="direction">area 5</div>
+        <div class="direction">area 6</div>
+        <div class="direction">area 7</div>
+        <div class="direction">area 8</div>
+    </section>
+    <section id="flex_dir_col">
+        <!-- div.direction*5 -->
+        <div class="direction">area 9</div>
+        <div class="direction">area 10</div>
+        <div class="direction">area 11</div>
+        <div class="direction">area 12</div>
+    </section>
+    <section id="flex_dir_col_rev">
+        <!-- div.direction*5 -->
+        <div class="direction">area 13</div>
+        <div class="direction">area 14</div>
+        <div class="direction">area 15</div>
+        <div class="direction">area 16</div>
+    </section>
+
+<!-- flex wrap -->
+    <style>
+        #wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            row-gap: 10px;
+            height: auto;
+            /* height: 500px; */
+            width: 100%;
+            align-items: center;
+            /* overflow: hidden; while using height:auto no need to put overflow */
+        }
+    </style>
+    <h1>flex_wrap</h1>
+    <section id="wrap">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+
+    <style>
+        #nowrap {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            column-gap: 10px;
+            height: auto;
+            width: 100%;
+            align-items: center;
+        }
+    </style>
+
+    <h1>flex_nowrap</h1>
+    <section id="nowrap">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+
+    <!-- flex flow  -->
+    <style>
+        #rnowrap {
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 10px;
+            justify-content: space-evenly;
+        }
+    </style>
+    <h1>flex_flow_rnowrap</h1>
+    <section id="rnowrap">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+
+    <style>
+        #cnowrap {
+            display: flex;
+            flex-flow: column nowrap;
+            height: auto;
+            gap: 10px;
+        }
+    </style>
+    <h1>flex_flow_cnowrap</h1>
+    <section id="cnowrap">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+
+    <style>
+        #rwrap {
+            display: flex;
+            flex-flow: row wrap;
+            height: auto;
+            width: auto;
+            gap: 10px;
+            justify-content: space-evenly;
+        }
+    </style>
+    <h1>flex_flow_rwrap</h1>
+    <section id="rwrap">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+
+    <style>
+        #cwrap {
+            display: flex;
+            flex-flow: column wrap;
+            height: auto;
+            width: auto;
+            gap: 10px;
+        }
+    </style>
+    <h1>flex_flow_cwrap</h1>
+    <section id="cwrap">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+    
+
+    <!-- justify content -->
+    <style>
+        #jstcont_fs {
+            display: flex;
+            justify-content: flex-start;
+            /* like left align */
+            gap:5px;
+            background-color: aquamarine;
+        }
+    </style>
+    <h1>jstcont_fs</h1>
+    <section id="jstcont_fs">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+    
+    <style>
+        #jstcont_fe {
+            display: flex;
+            justify-content: flex-end;
+            /* like right align */
+            gap:5px;
+            background-color: aquamarine;
+        }
+    </style>
+    <h1>jstcont_fe</h1>
+    <section id="jstcont_fe">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+    
+    <style>
+        #jstcont_c {
+            display: flex;
+            justify-content: center;
+            /* like center align */
+            gap:5px;
+            background-color: aquamarine;
+        }
+    </style>
+    <h1>jstcont_c</h1>
+    <section id="jstcont_c">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+    
+    <style>
+        #jstcont_sb {
+            display: flex;
+            justify-content: space-between;
+            /* it create the space between the content like justify no space in left and right*/
+            gap:5px;
+            background-color: aquamarine;   
+        }
+    </style>
+    <h1>jstcont_sb</h1>
+    <section id="jstcont_sb">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+    
+    <style>
+        #jstcont_sa {
+            display: flex;
+            justify-content: space-around;
+            /* it create the space between the content also the left and right with half of the content between space*/
+            gap:5px;
+            background-color: aquamarine;
+        }
+    </style>
+    <h1>jstcont_sa</h1>
+    <section id="jstcont_sa">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+    
+    <style>
+        #jstcont_se {
+            display: flex;
+            justify-content: space-evenly;
+            /* it create the space between the content also the left and right with equal space like content between space*/
+            gap:5px;
+            background-color: aquamarine;
+        }
+    </style>
+    <h1>jstcont_se</h1>
+    <section id="jstcont_se">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+
+
+    <!-- align item -->
+    <style>
+        #alitm_stretch{
+            display: flex;
+            flex-direction: row;
+            height: 300px;   
+            justify-content: center;     
+            /* align-items: stretch; */
+            /* align-items: flex-start; */
+            /* align-items: center; */
+            /* align-items: flex-end; */
+            /* align-items: baseline; */
+            gap:5px;
+            background-color: rgb(0, 255, 170);
+        }
+    </style>
+    <h1>alitm_stretch????????</h1>
+    <section id="alitm_stretch">
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 200px;">1</div>
+    </section>
+
+    <!-- <style>
+        #alitm_stretch {
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            align-items: stretch;        
+            gap:5px;
+            background-color: rgb(0, 255, 170);
+        }
+    </style>
+    <h1>alitm_stretch</h1>
+    <section id="alitm_stretch">
+        <div style="border: 1px solid green; width: 200px; height: 50px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 50px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 50px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 50px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 50px;">1</div>
+        <div style="border: 1px solid green; width: 200px; height: 50px;">1</div>
+    </section> -->
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1></h1>
+<sectioin id="disp_inline">
+    content
+    content
+    content
+    content
+    content
+    content
+</sectioin>
+<sectioin id="disp_in_block">
+    <div class="content" style="display: inline;">content</div>
+    <div class="content" style="display: inline;">content</div>
+    <div class="content" style="display: inline;">content</div>
+    <div class="content" style="display: inline;">content</div>
+    <div class="content" style="display: inline;">content</div>
+</sectioin>
+<sectioin id="disp_block">
+    <div class="content">content</div>
+    <div class="content">content</div>
+    <div class="content">content</div>
+    <div class="content">content</div>
+    <div class="content">content</div>
+</sectioin>
+<sectioin id="disp_none">
+    <div class="content">content</div>
+    <div class="content">content</div>
+    <div class="content">content</div>
+    <div class="content">content</div>
+    <div class="content">content</div>
+</sectioin> -->
+
+<!-- /* #disp_inline{
+    display: inline;
+    /* width: 100px; 
+    /* width can't consider 
+    border: 1px double red;
+}
+#disp_in_block{
+
+    width: 500px;
+    /* width will consider 
+    border: 1px double red;
+}
+#disp_block{
+    display: block;
+    width: 400px;
+    border: 1px double red;
+}
+#disp_none{
+    display: none;
+    width: 100px;
+    border: 1px double red;
+}
+.content{
+
+    width: 150px;
+    border: 1px solid blue;
+} */ -->

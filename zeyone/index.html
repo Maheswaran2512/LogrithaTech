@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeyone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="timeline.css">
+    <link rel="stylesheet" href="animation.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQYQTGX5HW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-VQYQTGX5HW');
+    </script>
+
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI";
+    margin: 0;
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+section {
+    display: grid;
+    place-items: center;
+    align-content: center;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.header p {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    padding: 15px 0px 15px 0px;
+    color: #424242;
+    margin-left: 10px;
+}
+
+.header a {
+
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #222222;
+    color: #222222;
+    background-color: #fff;
+    padding: 8px 15px 8px 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    font-size: 18px;
+    height: 42px;
+    text-decoration: none;
+
+
+}
+
+.header button:hover {
+    background: 0 0;
+    color: #fff;
+    background-color: rgb(62, 53, 231);
+}
+
+.hero-container {
+    width: 100%;
+    display: flex;
+    padding: 60px;
+    background: rgb(0,74,173);
+    background: linear-gradient(146deg, rgba(0,74,173,1) 51%, rgba(82,152,246,1) 100%);
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.hero-text {
+    width: 60%;
+}
+
+.hero-heading {
+    font-size: 40px;
+    color: white;
+    font-weight: 620;
+}
+
+.hero-content {
+    font-size: 20px;
+    color: white;
+}
+
+.explore-btn {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    color: #222222;
+    background-color: #fff;
+    padding: 8px 15px 8px 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    font-size: 18px;
+    height: 42px;
+    margin-top: 15px;
+}
+
+.explore-btn:hover {
+    background: 0 0;
+    color: #fff;
+    background-color: rgb(107, 103, 176);
+}
+
+.register-btn {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ff753a;
+    color: #fff;
+    background-color: #ff753a;
+    padding: 8px 15px 8px 15px;
+    font-size: 18px;
+    height: 42px;
+    margin-top: 15px;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.register-btn:hover {
+    background: 0 0;
+    color: #ff5b3a;
+    background-color: #fff;
+    transform: translateY(-0.25em);
+}
+
+.web-slots {
+    color: red;
+}
+
+.hero-img {
+    width: 40%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    justify-content: flex-start;
+    /* Ensures images align correctly */
+}
+
+.carousel-slide img {
+    width: 100%;
+    /* Ensures images scale to the container */
+    height: auto;
+    flex-shrink: 0;
+    /* Prevents images from shrinking */
+    margin: 0;
+    /* Remove any margin */
+    padding: 0;
+    /* Remove any padding */
+    box-sizing: border-box;
+    /* Avoid width miscalculation */
+}
+
+.about-webinar {
+    display: flex;
+    margin-top: 20px;
+    padding-top: 30px;
+}
+
+.about-content {
+    width: 60%;
+    margin-right: 10px;
+}
+
+.about-heading {
+    font-size: 30px;
+    font-weight: 620;
+}
+
+.about-text {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.about-details {
+    display: flex;
+    margin-top: 10px;
+}
+
+.pricing {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.details {
+    width: 50%;
+    padding-left: 15px;
+}
+
+.amount {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.amount span {
+    text-decoration: line-through;
+    color: #5f5f5f;
+    margin-left: 10px;
+}
+
+.webinar-details {
+    display: flex;
+    font-size: 20px;
+    border: 1px solid #3b5998;
+    margin-bottom: 12px;
+    padding: 5px 10px 5px 10px;
+    align-items: center;
+    border-radius: 5px
+}
+
+.webinar-details span {
+    font-size: 16px;
+}
+
+.web-slots {
+    margin-top: 7px;
+    text-align: center;
+}
+
+.register-btn1 {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ff753a;
+    color: #fff;
+    background-color: #ff753a;
+    padding: 8px 15px 8px 15px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+    font-size: 18px;
+    height: 42px;
+    margin-top: 7px;
+    margin-left: 5px;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+}
+
+.register-btn1:hover {
+    background: 0 0;
+    color: #ff5b3a;
+    background-color: #fff;
+}
+
+.about-img {
+    width: 50%;
+}
+
+.about-img video {
+    width: 100%;
+    border: 3px solid #333;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    margin-left: 15px;
+}
+
+.learn-part-head {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.learn {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow items to wrap into multiple rows */
+    gap: 10px;
+    /* Space between items */
+}
+
+/* Flex properties for each child div */
+.learn-item {
+    flex: 1 1 calc(50% - 10px);
+    background-color: #f3f6ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.learn-heading {
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.learn-content {
+    font-size: 15px;
+}
+
+.learn-reg-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+.why-webinar {
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.why-heading {
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.why-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.why-card {
+    flex: 1 1 calc(50% - 10px);
+    background-color: #edf2ff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.why-card-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.course-structure {
+    margin-top: 50px;
+}
+
+.clouse-struc-heading {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.custom-bullets {
+    list-style: none;
+    list-style-image: url(assests/header_img/bullet.svg);
+    padding-left: 20px;
+}
+
+.custom-bullets li {
+    margin-bottom: 10px;
+}
+.mentor-head{
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.mentor-head span{
+    color: #004AAD;
+}
+.mentor-card{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    border: #7389af solid 1.5px;
+    border-radius: 10px;
+}
+
+.mentor-description{
+    width: 60%;
+    padding-right: 15px;
+    font-size: 18px;
+}
+.custom-bullets li{
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+.custom-bullets li::marker {
+    font-size: 22px;
+}
+.mentor-details{
+    width: 40%;
+}
+.mentor-details img{
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border-radius: 10px;
+}
+
+    .mentor-name{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+.mentor-title{
+    font-size: 14px;
+    text-align: center;
+    color: #0445b5;
+}
+
+.why-zeyone-container {
+    background-color: #ffffff;
+    width: 90%;
+    margin: auto;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.why-zeyone-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+.why-zeyone-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.why-zeyone-item {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+}
+.why-zeyone-icon {
+    color: #4CAF50;
+    margin-right: 10px;
+    font-size: 18px;
+}
+.why-zeyone-info {
+    font-size: 14px;
+    color: #777;
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        padding: 5px 20px 5px 20px;
+    }
+    
+    .logo-container{
+        gap: 10px;
+    }
+
+    .header p {
+        font-size: 34px;
+        color: #1e4476;
+        margin-left: 0;
+        padding: 5px 0px 5px 0px;
+    }
+
+    .header a {
+        display: none;
+    }
+
+    .hero-container {
+        padding: 20px;
+        padding-bottom: 6px;
+        border-radius: 0px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-heading {
+        font-size: 22px;
+        color: white;
+        font-weight: 620;
+        text-align: center;
+    }
+
+    .hero-content {
+        font-size: 18px;
+        color: white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .hero-img {
+        display: none;
+    }
+
+    .hero-btns {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .hero-btns a {
+        width: 48%;
+    }
+
+    .explore-btn {
+        margin-top: 15px;
+        width: 100%;
+        font-size: 14px;
+        padding: 5px 25px 5px 25px;
+        height: fit-content;
+    }
+
+    .register-btn {
+        width: 70%;
+        margin-left: 0px;
+        margin-top: 8px;
+        font-size: 18px;
+        padding: 5px 25px 5px 25px;
+        display: none;
+    }
+
+    .about-webinar {
+        margin-top: 0px;
+        flex-direction: column;
+        padding: 0px 20px 0px 20px;
+    }
+
+    .about-heading {
+        font-size: 22px;
+        font-weight: 620;
+        display: none;
+    }
+
+    .about-content {
+        width: 100%;
+        margin-bottom: 20px;
+        order: 2;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .about-text {
+        font-size: 16px;
+        margin-top: 5px;
+        display: none;
+    }
+
+    .about-details {
+        flex-direction: column;
+    }
+
+    .details {
+        order: 1;
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .pricing {
+        order: 2;
+        width: 100%;
+        margin-top: 0px;
+    }
+
+
+    .webinar-details span {
+        font-size: 16px;
+    }
+
+    .webinar-details {
+        height: 35px;
+    }
+
+    .about-img {
+        width: 100%;
+        order: 1;
+        margin-bottom: 0px;
+    }
+
+    .about-img video {
+        margin-left: 0px;
+    }
+
+    .learn-part {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .learn-part-head {
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 50px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .learn {
+        display: block;
+    }
+
+    .learn-item {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+
+    .learn-heading {
+        font-size: 20px;
+    }
+
+    .learn-content {
+        font-size: 15px;
+    }
+
+    .mentor-details {
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .mentor-img {
+        display: none;
+    }
+
+    .mentor-head {
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 30px;
+    }
+
+    .mentor-head span {
+        color: #0445b5;
+    }
+
+    .mentor {
+        display: block;
+        margin-top: 50px;
+        padding: 0px 20px 0px 20px;
+    }
+
+    .mentor-name {
+        font-size: 19px;
+    }
+
+    .mentor-content {
+        font-size: 15px;
+    }
+
+    .why-webinar {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .why-heading {
+        font-size: 28px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    .why-container {
+        display: block;
+    }
+
+    .why-card {
+        flex: 1 1 100%;
+        margin-bottom: 10px;
+    }
+
+    .why-card-heading {
+        display: flex;
+        font-size: 20px;
+        align-items: center;
+        gap: 4px;
+    }
+    .why-card-heading i{
+        font-size: 15px;
+    }
+
+    .why-card-content {
+        font-size: 15px;
+    }
+
+    .mentor-container {
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+        border: 2px solid #2ecc71;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #121212;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .mentor-header {
+        background-color: #000;
+        padding: 15px 0;
+        border-bottom: 2px solid #2ecc71;
+    }
+
+    .mentor-header h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #fff;
+    }
+
+    .highlight {
+        color: #2ecc71;
+    }
+
+    .mentor-card {
+        padding: 15px;
+        flex-direction: column;
+    }
+
+    .mentor-details{
+        order: 1;
+    }
+
+    .mentor-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        box-shadow: rgb(75, 89, 110) 0px 20px 30px -10px;
+    }
+
+    .mentor-name {
+        font-size: 22px;
+        margin: 15px 0px 0px 0px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 0px;
+    }
+
+    .mentor-title {
+        font-size: 14px;
+        color: #254fe8;
+        text-align: center;
+    }
+
+    .mentor-description {
+        order: 2;
+        width: 100%;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #323232;
+        padding-right: 0px;
+    }
+
+    .footer-content {
+        flex-direction: row;
+        align-items:normal;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+}
+
+
+
+
+.footer {
+    display: flex;
+    margin-top: 30px;
+    padding: 10px 0px;
+    color: white;
+    background: rgb(0,74,173);
+    background: linear-gradient(146deg, rgba(0,74,173,1) 51%, rgba(82,152,246,1) 100%);
+}
+
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Align items to the ends */
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px; /* Space between the links */
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="header">
+            <div class="logo-container">
+                <img src="assests/header_img/logo.png" width="45px" height="45px">
+                <p>ZEYONE</p>
+            </div>
+            <a href="https://payments.cashfree.com/links?code=m8b3gc893rs0">Register Webinar</a>
+        </div>
+    </section>
+    <section>
+        <div class="hero-container">
+            <div class="hero-text hidden">
+                <div class="hero-heading">Master Meta Ads in 30 Days: Grow Your Business or Start a Freelance Career!
+                </div>
+                <div class="hero-content">Join our live workshop to learn proven strategies for creating and
+                    managing high-converting Meta ad campaigns.</div>
+                <div class="hero-btns">
+                    <a href="https://payments.cashfree.com/links?code=m8b3gc893rs0" class="register-btn">Register
+                        Webinar</a>
+                </div>
+
+            </div>
+
+            <div class="hero-img hidden">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="assests\header_img\header_img1.png" alt="Image 1">
+                        <img src="assests\header_img\header_img2.png" alt="Image 2">
+                        <img src="assests\header_img\header_img3.png" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="about-webinar" id="about-webinar">
+            <div class="about-content hidden">
+                <div class="about-heading">Learn How to Earn With an Ecommerce Business With Just a Laptop & WiFi - All
+                    From
+                    Your Own Home!</div>
+                <div class="about-text">This 3-hour workshop is specifically designed for anyone eager to launch their
+                    own
+                    ecommerce or dropshipping business, without the hassle of inventory, employees, or a physical
+                    office.
+                </div>
+
+                <div class="about-details">
+                    <div class="pricing">
+                        <div class="amount">₹990/-</div>
+                        <a href="https://payments.cashfree.com/links?code=m8b3gc893rs0" class="register-btn1">Register
+                            Webinar</a>
+                        <div class="web-slots">*Limited slots</div>
+                    </div>
+                    <div class="details">
+                        <div class="webinar-details"><i class="fa-regular fa-calendar"
+                                style="color: #004AAD; margin-right:10px"></i><span>Date: 7th April</span>
+                        </div>
+                        <div class="webinar-details"><i class="fa-regular fa-hourglass-half"
+                                style="color: #004AAD; margin-right:10px"></i><span>Timing: 07:00 - 08:00pm</span></div>
+                        <div class="webinar-details"><i class="fa-solid fa-language"
+                                style="color: #004AAD; margin-right:10px"></i><span>Language: English</span></div>
+                        <div class="webinar-details"><i class="fa-solid fa-calendar-xmark"
+                                style="color: #004AAD; margin-right:10px"></i><span>Duration: 30 days</span></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="about-img">
+                <video controls poster="assests\header_img\video_cover_img.jpg">
+                    <source src="assests\videos\cover_video.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="learn-part">
+            <div class="learn-part-head">What you will learn in this workshop?</div>
+
+            <div class="learn">
+                <div class="learn-item hidden">
+                    <div class="learn-heading"><i class="fa-regular fa-file-lines"
+                            style="color: #292929;font-size:28px; margin-bottom:5px;"></i><br>Launch Effective Campaigns
+                    </div>
+                    <div class="learn-content">Learn how to plan, execute, and optimize ad campaigns to achieve maximum
+                        reach, engagement, and conversions.</div>
+                </div>
+                <div class="learn-item hidden">
+                    <div class="learn-heading"><i class="fa-solid fa-rectangle-ad"
+                            style="color: #292929;font-size:28px; margin-bottom:5px;"></i><br>Run Ads for Your Own
+                        Business</div>
+                    <div class="learn-content">Gain the skills to independently create and manage high-performing Meta
+                        (Facebook and Instagram) ad campaigns to grow your business and drive sales.
+                    </div>
+                </div>
+                <div class="learn-item hidden">
+                    <div class="learn-heading"><i class="fa-solid fa-globe"
+                            style="color: #292929;font-size:28px; margin-bottom:5px;"></i><br>Become a Freelance
+                        Advertiser/ Media Buyer</div>
+                    <div class="learn-content">Start your journey as a freelance advertiser/media buyer, helping
+                        businesses achieve their marketing goals and earning a steady income.
+                    </div>
+                </div>
+                <div class="learn-item hidden">
+                    <div class="learn-heading"><i class="fa-solid fa-bullseye"
+                            style="color: #292929;font-size:28px; margin-bottom:5px;"></i><br>Understand Ad Targeting
+                    </div>
+                    <div class="learn-content">Gain expertise in Facebook’s advanced targeting options to reach the
+                        right audience with precision.
+                    </div>
+                </div>
+                <div class="learn-item hidden">
+                    <div class="learn-heading"><i class="fa-solid fa-users"
+                            style="color: #292929;font-size:28px; margin-bottom:5px;"></i><br>Supportive Community
+                    </div>
+                    <div class="learn-content">Connect with other participants to share experiences, learn
+                        collaboratively, and grow together.
+                    </div>
+                </div>
+                <div class="learn-item hidden">
+                    <div class="learn-heading"><i class="fa-solid fa-money-bills"
+                            style="color: #292929;font-size:28px; margin-bottom:5px;"></i><br>Achieve Financial
+                        Independence
+                    </div>
+                    <div class="learn-content">Whether growing your own business or working as a freelancer, this
+                        workshop equips you to generate consistent income using Meta Ads.
+                    </div>
+                </div>
+            </div>
+            <div class="learn-reg-btn">
+                <a href="https://payments.cashfree.com/links?code=m8b3gc893rs0" class="register-btn1">Register
+                    Webinar</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="mentor">
+            <div class="mentor-head">Meet Your <span>Mentor</span></div>
+            <div class="mentor-card">
+                <div class="mentor-description">
+                    <ul class="custom-bullets">
+                        <li>I have extensive experience in running impactful Meta and Google Ads campaigns, delivering
+                            exceptional results for businesses across various industries.</li>
+                        <li>Known for data-driven strategies and meticulous planning, I have helped businesses grow
+                            their online presence and achieve measurable outcomes.</li>
+                        <li>Dedicated to simplifying Meta Ads, I have created this workshop to make complex advertising
+                            strategies easy to understand and implement.</li>
+                        <li>This workshop is designed to provide real-world insights and proven techniques, empowering
+                            participants to create successful campaigns confidently.</li>
+
+                    </ul>
+                </div>
+                <div class="mentor-details">
+                    <img src="assests/header_img/mentor_img.jpg" alt="Mentor" class="mentor-image">
+                    <div class="mentor-name">Tamilalagan</div>
+                    <div class="mentor-title">Meta Ads Expert</div>
+                </div>
+            </div>
+    </section>
+
+    <section class="hidden">
+        <div class="why-webinar">
+            <div class="why-heading">Why Should You Attend This Workshop?</div>
+            <div class="why-container">
+                <div class="why-card hidden">
+                    <div class="why-card-heading"><i class="fa-solid fa-star" style="margin-right:5px"></i> Learn from
+                        Live Session</div>
+                    <div class="why-card-content">Gain insider tips and proven strategies from an expert with hands-on
+                        live sessions in Meta Ads.</div>
+                </div>
+                <div class="why-card hidden">
+                    <div class="why-card-heading"><i class="fa-solid fa-star" style="margin-right:5px"></i>Applicable
+                        for Everyone</div>
+                    <div class="why-card-content">Whether you're a business owner, student or an aspiring freelancer,
+                        this workshop is tailored for all skill levels.</div>
+                </div>
+                <div class="why-card hidden">
+                    <div class="why-card-heading"><i class="fa-solid fa-star" style="margin-right:5px"></i>Hands-On
+                        Learning</div>
+                    <div class="why-card-content">Practice in real-time with actionable exercises and live
+                        demonstrations.</div>
+                </div>
+                <div class="why-card hidden">
+                    <div class="why-card-heading"><i class="fa-solid fa-star" style="margin-right:5px"></i>Save Time and
+                        Money</div>
+                    <div class="why-card-content">Avoid trial-and-error and learn what works directly from an
+                        experienced mentor.</div>
+                </div>
+
+                <div class="why-card hidden">
+                    <div class="why-card-heading"><i class="fa-solid fa-star" style="margin-right:5px"></i>Exclusive
+                        Resources</div>
+                    <div class="why-card-content">Receive templates, guides, and lifetime access to recorded sessions
+                        for future reference.</div>
+                </div>
+
+                <div class="why-card hidden">
+                    <div class="why-card-heading"><i class="fa-solid fa-star" style="margin-right:5px"></i>Unlock Career
+                        Opportunities</div>
+                    <div class="why-card-content">Start your journey as a freelance advertiser/media buyer or enhance
+                        your marketing career with in-demand skills.</div>
+                </div>
+            </div>
+            <div class="learn-reg-btn">
+                <a href="https://payments.cashfree.com/links?code=m8b3gc893rs0" class="register-btn1">Register
+                    Webinar</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="course-structure">
+        <div class="clouse-struc-heading">Course Structure</div>
+
+        <div class="timeline">
+            <div class="entry">
+                <div class="title">
+                    <h3>Day 1-5</h3>
+                </div>
+                <div class="body">
+                    <p>Fundamentals of Meta Ads</p>
+                    <ul>
+                        <li>Overview of Meta (Facebook and Instagram) advertising.</li>
+                        <li>Understanding ad policies and account setup.</li>
+                        <li>Introduction to Ads Manager and key metrics</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="title">
+                    <h3>Day 6-10</h3>
+                </div>
+                <div class="body">
+                    <p>Audience Targeting</p>
+                    <ul>
+                        <li>How to define and create Custom Audiences.</li>
+                        <li>Using Lookalike Audiences to scale campaigns.</li>
+                        <li>Understanding demographic, interest, and behavior-based targeting.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="title">
+                    <h3>Day 11-15</h3>
+                </div>
+                <div class="body">
+                    <p>Ad Creatives That Convert</p>
+                    <ul>
+                        <li>Crafting eye-catching visuals and compelling copy.</li>
+                        <li>Designing ad formats: carousel, video, and dynamic ads.</li>
+                        <li>Tools for creating professional ad creatives.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="entry">
+                <div class="title">
+                    <h3>Day 16-20</h3>
+                </div>
+                <div class="body">
+                    <p>Campaign Setup and Optimization
+                    </p>
+                    <ul>
+                        <li>Setting up conversion campaigns for lead generation and sales.</li>
+                        <li>Budgeting and bidding strategies.</li>
+                        <li>Split testing and optimization techniques.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="title">
+                    <h3>Day 21-25</h3>
+                </div>
+                <div class="body">
+                    <p>Analytics and Scaling
+                    </p>
+                    <ul>
+                        <li>Reading and analyzing campaign performance.</li>
+                        <li>Key performance indicators (KPIs) to track.</li>
+                        <li>Scaling winning campaigns without overspending</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="title">
+                    <h3>Day 26-30</h3>
+                </div>
+                <div class="body">
+                    <p>Freelancing as a Media Buyer
+                    </p>
+                    <ul>
+                        <li>How to find and pitch to clients.</li>
+                        <li>Building long-term client relationships.</li>
+                        <li>Managing multiple ad accounts like a pro.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="why-zeyone-container">
+        <h1 class="why-zeyone-title">Why ZEYONE?</h1>
+        <ul class="why-zeyone-list">
+            <li class="why-zeyone-item">
+                <i class="fas fa-check why-zeyone-icon" style="color: #004AAD;"></i>
+                Live Workshop
+            </li>
+            <li class="why-zeyone-item">
+                <i class="fas fa-check why-zeyone-icon" style="color: #004AAD;"></i>
+                Resolve Doubts Instantly
+            </li>
+            <li class="why-zeyone-item">
+                <i class="fas fa-check why-zeyone-icon" style="color: #004AAD;"></i>
+                Client Acquisition
+            </li>
+            <li class="why-zeyone-item">
+                <i class="fas fa-check why-zeyone-icon" style="color: #3b5998;"></i>
+                Unique Advertising Strategies
+            </li>
+        </ul>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>ZEYONE</p>
+            <div class="footer-links">
+                <a href="t&c.html">Terms and conditions</a>
+                <a href="privacy_policy.html">Privacy policy</a>
+                <a href="refund_policy.html">Refund policy</a>
+                <a href="contact_us.html">Contact us</a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const carouselSlide = document.querySelector(".carousel-slide");
+        const images = document.querySelectorAll(".carousel-slide img");
+        let counter = 0;
+
+        function updateSize() {
+            return images[0].clientWidth;
+        }
+
+        function autoSlide() {
+            const size = updateSize(); // Get the current size of the images
+            counter = (counter + 1) % images.length; // Loop back to the first image
+            carouselSlide.style.transform = `translateX(${-counter * size}px)`;
+        }
+
+        // Resize listener for responsive behavior
+        window.addEventListener("resize", () => {
+            const size = updateSize();
+            carouselSlide.style.transform = `translateX(${-counter * size}px)`;
+        });
+
+        // Auto-slide every 3 seconds
+        setInterval(autoSlide, 3000);
+    });
+
+
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        function adjustLayout() {
+            const aboutImg = document.querySelector(".about-img");
+            const heroBtns = document.querySelector(".hero-btns");
+
+            if (window.innerWidth <= 768) {
+                if (aboutImg && heroBtns) {
+                    // Move the about-img div before hero-btns
+                    heroBtns.parentNode.insertBefore(aboutImg, heroBtns);
+                }
+            } else {
+                // Reset the layout if needed (optional, only if rearrangement is permanent)
+                const aboutSection = document.querySelector(".about-webinar");
+                if (aboutSection && aboutImg) {
+                    aboutSection.appendChild(aboutImg);
+                }
+            }
+        }
+
+        // Adjust layout on page load and window resize
+        adjustLayout();
+        window.addEventListener("resize", adjustLayout);
+    });
+
+
+</script>
+
+</html>
