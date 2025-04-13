@@ -23,6 +23,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            border-radius: 50%;
+            transition-duration: 2s;
         }
 
         .form_input {
@@ -30,17 +32,68 @@
             gap: 30px;
             margin-bottom: 20px;
             align-items: center;
+            width: 80%;
         }
 
         label {
             flex-basis: 100px;
             font-weight: bold;
+            width: 100%;
         }
 
         input {
             width: 100%;
-            height: 30px;
+            padding: 10px;
             border: 3px solid rgb(0, 0, 140);
+            border-radius: 30px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            color: red;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        @media (max-width:760px) {
+            #form_container {
+                width: 100%;
+                background-color: rgb(4, 255, 88);
+                border-radius: 20%;
+            }
+
+            .form_input:last-child {
+                flex-direction: row;
+                margin-top: 10px;
+            }
+        }
+
+        @media (min-width:300px) and (max-width:500px) {
+            #form_container {
+                width: 100%;
+                background-color: rgb(4, 217, 255);
+                border-radius: 10%;
+            }
+
+            .form_input {
+                flex-direction: column;
+                /* flex-basis: 10px; */
+                width: 100%;
+                padding: 0px 20px;
+            }
+
+            label {
+                flex-basis: 10px;
+                width: 100%;
+            }
+
+            /* input {
+                width: 100%;
+
+            } *//* 
+            input[type="submit"],
+            input[type="reset"] {
+            } */
         }
     </style>
 
@@ -49,6 +102,7 @@
 
 
 <body>
+
     <form action="">
         <div id="form_container">
             <div class="form_input">
@@ -61,16 +115,46 @@
             </div>
             <div class="form_input">
                 <input type="reset" value="reset">
-                <input type="submit" value="submit" onclick="valid">
+                <input type="submit" value="submit" onclick="validation()">
             </div>
         </div>
     </form>
+    <p id="error"></p>
+    <!-- <span id="error"></span> -->
 
-<script>
-    function valid(){
-        // event.preventDefault();
-    }
-</script>
+    <script>
+        console.log("script is working")
+        function validation() {
+            event.preventDefault(); // to stop the loading but action will done
+            // alert("Working");
+            console.log("working")
+
+            form_name = document.getElementById("name");
+            if (form_name.value == "") {
+                alert("Enter your Name")
+                var ph_mess = document.getElementById("name");
+                // error_mess.innerPlaceholder="Enter Your Name";
+                ph_mess.placeholder = "Enter Your Name";
+                // var bdy_mess = document.getElementById("error");
+                // bdy_mess.innerText = "enter your name";
+            }
+
+            form_email = document.getElementById("email");
+            if (form_email.value == "") {
+                alert("Enter your Email")
+                var ph_mess = document.getElementById("email");
+                // error_mess.innerPlaceholder="Enter Your Name";
+                ph_mess.placeholder = "Enter Your Email";
+            }
+
+            form_name = document.getElementById("name");
+            if (form_name.value == "") {
+                console.log("bodytest")
+                var bdy_mess = document.getElementById("error");
+                bdy_mess.innerText = "enter your name";
+            }
+        }
+    </script>
 </body>
 
 </html>
