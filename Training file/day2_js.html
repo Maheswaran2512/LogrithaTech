@@ -1,0 +1,56 @@
+<!-- 
+1. Handle HTML - tags, Attributes, Values (Contents)
+2. Handle CSS  -> All Properties & their values, classes, Id
+3. Collect Data from Forms and Validate 
+4. Send Collected Form Data into Backend (PHP,Java,Python,Node JS)
+5. Recieve (Return) Data from Backend  (PHP,Java,Python,Node JS)
+6. Handles the Event (Click, Hover, Type,Select)
+
+DOM -> Document Object Model
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Day 1</title>
+</head>
+<body>
+
+    <h1 id="h1">JavaScript Day 1</h1>
+
+
+    <p id="p">Test <strong>Paragraph</strong></p>
+
+    <br>
+    <input type="text" id="name">
+    
+
+    <script>
+        console.log("Day 1 - Javascript Session");
+        var a=10;
+        var b=20;
+        console.log(a);
+        console.log(b);
+        console.log(c)
+        var c=30;
+        console.log(c);
+        // console.log(d);
+        let d=20;
+        const e=20;
+        document.getElementById("h1");
+        document.getElementById("h1").innerText;
+        document.getElementById("p").innerText;
+        document.getElementById("p").innerHTML;
+        document.getElementById("p").outerHTML;
+        document.getElementById("name");
+        document.getElementById("name").value;
+        var name=document.getElementById("name").value;
+        if(name==""){
+            console.log("Please enter your name")
+        }
+
+    </script>
+</body>
+</html>

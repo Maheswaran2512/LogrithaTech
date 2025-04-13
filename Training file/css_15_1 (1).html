@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Form with Flex</title>
+    <style>
+
+        *{
+            box-sizing:border-box;
+        }
+        #form_container {
+            background-color: cyan;
+            border: 2px solid blue;
+            margin: auto;
+            padding: 2%;
+            width: 350px;
+            height: 350px;
+            border-radius: 10%;
+            box-shadow: 5px 5px rebeccapurple;
+        }
+
+        .input_data{
+            display: flex;
+            gap:10px;
+            margin-top: 20px;
+        }
+
+        label{
+            flex-basis:100px;
+            font-weight: bold;
+        }
+
+        input{
+            width: 100%;
+            height: 30px;
+            border: 2px solid blue;
+            border-radius: 30px;
+
+        }
+
+        input:focus{
+            border-color: green !important;
+
+        }
+
+        input[type="submit"],input[type="reset"]{
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+        }
+
+
+        @media (min-width:100px) and (max-width:300px){
+            #form_container{
+                width: 100%;
+            }
+
+            .input_data{
+              
+                flex-direction: column;
+            }
+
+            .input_data:last-child{
+                flex-direction: row;
+            }
+
+            label{
+                flex-basis: 1px;
+            }
+        }
+
+
+        @media (min-width:300px) and (max-width:500px){
+
+            #form_container{
+                width: 100%;
+            }
+
+            .input_data{
+              
+                flex-direction: column;
+            }
+
+            .input_data:last-child{
+                flex-direction: row;
+            }
+
+            label{
+                flex-basis: 10px;
+            }
+            
+        }
+
+        /* Display, visibility,Opacity & flex */
+        #name_error{
+            color:red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="form_container">
+        <form action="#" id="my_form">
+            <span id="name_error"></span>
+            <div class="input_data">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" value="" required>
+             
+                <!-- <input type="text" id="name" value="Muthu"> -->
+            </div>
+            <div class="input_data">
+                <label for="email">Email</label>
+                <input type="email" id="email" value="" required>
+
+                <!-- <input type="email" id="email" value="muthu@mail.com"> -->
+
+            </div>
+            <div class="input_data">
+                <input type="reset" id="reset">
+                <input type="submit" id="submit" onclick="validation()">
+            </div>
+
+        </form>
+    </div>
+    <script>
+        function validation(){
+            event.preventDefault();
+            // alert("Working");
+            // regular expressions
+
+            name_input=document.getElementById("name");
+            if(name_input.value==""){
+                var name_error=document.getElementById("name_error");
+                name_error.innerText="Please Enter your Name";
+                // alert("Please Enter your Name");
+            }else{
+                var name_error=document.getElementById("name_error");
+                name_error.innerText="";
+               
+                // alert(name_input.value);
+            }
+
+            email_input=document.getElementById("email");
+            if(email_input.value==""){
+                // alert("Please Enter your email")
+            }else{
+                // alert(email_input.value);
+            }   
+        }
+    </script>
+
+</body>
+
+</html>

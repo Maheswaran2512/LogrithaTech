@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Day 1</title>
+    <style>
+            .div{
+                width:80px;
+                height: 80px;
+                border: 2px solid red;
+            }
+
+            .div1{
+                border-color: rgb(68, 0, 255);
+                /* border: 2px solid rgb(68, 0, 255); */
+            }
+
+
+    </style>
+</head>
+<body>
+ <!-- 
+    Variables -> Var,let, const
+    types -> Number, Strings, Boolean, Undefined, Null
+    Operators
+    Conditional Statements
+    Loop
+    Functions
+    -->
+
+    <p id="p1">
+        Paragraph <strong>1</strong>
+    </p>
+    <input type="button" value="To change Paragraph Content" onclick="change_content()">
+    <input type="button" value="To change Paragraph Content Color" onclick="change_color()">
+    <input type="button" value="To change Paragraph Background Color" onclick="change_bgcolor()">
+    <div class="div div1"></div>
+   <div class="div" id="div"></div>
+
+   
+
+   <input type="button" onclick="changediv()" value="Change Div">
+   
+   <div id="div1">1</div>
+   <input type="button" onclick="add_class()" value="Change Div">
+   
+   
+   <script>
+
+function add_class(){
+        var div_data=document.getElementById("div1");
+        div_data.classList.add("div");
+        div_data.classList.add("div1");
+    }
+    function changediv(){
+        var div_data=document.getElementById("div");
+        div_data.classList.toggle("div1");
+    }
+    function change_content(){
+        var para_data=document.getElementById("p1");
+        alert(para_data.innerText);
+        alert(para_data.innerHTML);
+        var new_content="Paragraph <strong>2</strong>";
+        para_data.innerHTML=new_content;
+
+        // var name_error=document.getElementById("name_error");
+        // name_error.innerText="Please Enter your Name";
+    }
+
+    function change_color(){
+        var para_data=document.getElementById("p1");
+        para_data.style.color="red"; 
+    }
+     
+    function change_bgcolor(){
+        var para_data=document.getElementById("p1");
+        para_data.style.backgroundColor="yellow"; 
+    }
+   </script> 
+</body>
+</html>
