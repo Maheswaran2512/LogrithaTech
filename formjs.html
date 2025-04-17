@@ -90,7 +90,8 @@
             /* input {
                 width: 100%;
 
-            } *//* 
+            } */
+            /* 
             input[type="submit"],
             input[type="reset"] {
             } */
@@ -107,7 +108,7 @@
         <div id="form_container">
             <div class="form_input">
                 <label for="name">Name</label>
-                <input type="text" id="name" value="">
+                <input type="text" id="name" onclick="ph_n()" value="">
             </div>
             <div class="form_input">
                 <label for="email">Email</label>
@@ -123,29 +124,58 @@
     <!-- <span id="error"></span> -->
 
     <script>
-        console.log("script is working")
+        console.log("script is working");
+
+        window.onload = function () {
+            document.getElementById("name").placeholder = "Enter Your Name";
+        };
+
+
+        // function ph_n() {
+        //     var ph_data = document.getElementById("name");
+        //     if (ph_data.value === "") {
+        //         ph_data.placeholder = "Enter your name";
+        //     }
+        // }
+
+
+        // function ph_n() {
+        //     var ph_data = document.getElementById("name");
+        //     console.log("placeholeder")
+        //     var ph_content = "Enter Your Name";
+        //     ph_data.placeholder = ph_content;
+        // }
+
+        document.getElementById("email").placeholder = "Enter Your Email";
+        // document.getElementById("email").value = "Enter Your Email";
+
+
+
         function validation() {
             event.preventDefault(); // to stop the loading but action will done
             // alert("Working");
             console.log("working")
 
-            form_name = document.getElementById("name");
-            if (form_name.value == "") {
-                alert("Enter your Name")
-                var ph_mess = document.getElementById("name");
-                // error_mess.innerPlaceholder="Enter Your Name";
-                ph_mess.placeholder = "Enter Your Name";
-                // var bdy_mess = document.getElementById("error");
-                // bdy_mess.innerText = "enter your name";
-            }
 
-            form_email = document.getElementById("email");
-            if (form_email.value == "") {
-                alert("Enter your Email")
-                var ph_mess = document.getElementById("email");
-                // error_mess.innerPlaceholder="Enter Your Name";
-                ph_mess.placeholder = "Enter Your Email";
-            }
+
+
+            // form_name = document.getElementById("name");
+            // if (form_name.value == "") {
+            //     alert("Enter your Name")
+            //     var ph_mess = document.getElementById("name");
+            //     // error_mess.innerPlaceholder="Enter Your Name";
+            //     ph_mess.placeholder = "Enter Your Name";
+            //     // var bdy_mess = document.getElementById("error");
+            //     // bdy_mess.innerText = "enter your name";
+            // }
+
+            // form_email = document.getElementById("email");
+            // if (form_email.value == "") {
+            //     alert("Enter your Email")
+            //     var ph_mess = document.getElementById("email");
+            //     // error_mess.innerPlaceholder="Enter Your Name";
+            //     ph_mess.placeholder = "Enter Your Email";
+            // }
 
             form_name = document.getElementById("name");
             if (form_name.value == "") {
