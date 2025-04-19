@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="formd1.css">
+    <style>
+        span {
+            /* color: red; */
+            font-size: small;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1 align="center">Registration Form</h1>
+    <div>
+        <span id="success"></span>
+        <!-- <form action="valid.pnp" method="get"> -->
+        <!-- <form action="#" method="get"> -->
+        <form action="#" id="my_form" method="post">
+            <div id="form_container">
+                <div class="form_input">
+                    <div>
+                        <label for="name">Name</label>
+                        <span id="name_error"></span>
+                    </div>
+                    <!-- <input type="text" name="name" id="name" onkeypress="valid()" placeholder="Enter Your Name"> -->
+                    <input type="text" name="name" id="name" oninput="name_upper()" placeholder="Enter Your Name">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="email">Email</label>
+                        <span id="email_error"></span>
+                    </div>
+                    <input type="email" name="email" id="email" oninput="email_lower()" placeholder="Enter Your Email">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="mobile">Mobile</label>
+                        <span id="mobile_error"></span>
+                    </div>
+                    <input type="text" name="mobile" id="mobile" oninput="mobile_len()"
+                        placeholder="Enter Your Mobile Nummber">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="password">Password</label>
+                        <span id="password_error"></span>
+                    </div>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="c_password">Confrim Password</label>
+                        <span id="cpass_error"></span>
+                    </div>
+                    <input type="password" name="c_password" id="c_password" placeholder="Confirm Password">
+                </div>
+                <div class="form_input">
+                    <input type="reset" value="reset">
+                    <!-- <input type="submit" id="submit" onclick="Validation()"> -->
+                    <button onclick="Validation()"> Submit </button>
+                    <!-- <button type="submit"> Submit </button> -->
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+
+        function name_upper() {
+            let name = $("#name").val();
+            $("#name").val(name.toUpperCase());
+        }
+
+        function email_lower() {
+            let email = $("#email").val();
+            $("#email").val(email.toLowerCase());
+        }
+
+        function mobile_len() {
+            let mobile = $("#mobile").val();
+            if (mobile.length != 10) {
+                $("#mobile").css("border-color", "red");
+                $("#mobile").css("border-width", "2px");
+                $("#mobile").css("outline", "none");
+            }
+
+            else {
+                $("#mobile").css("border-color", "green");
+                $("#mobile").css("border-width", "2px");
+            }
+        }
+
+        function Validation() {
+            event.preventDefault();
+            // alert("Working");
+            // f_name="test";
+            // let f_name1="test";
+            // let name = document.getElementById("name").value;
+            let name = $("#name").val();
+            // let email = document.getElementById("email").value.trim();
+            let email = $("#email").val();
+            // let mobile = document.getElementById("mobile").value.trim();
+            let mobile = $("#mobile").val();
+            // let password = document.getElementById("password").value;
+            let password = $("#password").val();
+            // let c_password = document.getElementById("c_password").value;
+            let c_password = $("#c_password").val();
+            // errors = 0;
+            errors = true;
+            const num_valid = /^[0-9]{10}$/;
+
+
+            if (name == '') {
+                // alert("ENter Your Name");
+                $("#name_error").text("Enter Your name");
+                // document.getElementById("name_error").innerText = "Enter Your Name";
+                // errors = errors + 1;
+                errors = false;
+                name_error.style.color = "red";
+            } else {
+                $("#name_error").text("");
+                // document.getElementById("name_error").innerText = "";
+            }
+
+            if (email == '') {
+                // alert("Enter Your Email");
+                $("#email_error").text("Enter Your Email");
+                // document.getElementById("email_error").innerText = "Enter Your Email";
+                // errors = errors + 1;
+                errors = false;
+            } else {
+                $("#email_error").text("");
+                // document.getElementById("email_error").innerText = "";
+            }
+
+            if (mobile == '') {
+                // alert("enter your mobile");
+                $("#mobile_error").text("Entter Mobile No.");
+                // document.getElementById("mobile_error").innerText = "Enter Mobile No";
+                // errors = errors + 1;
+                errors = false;
+            } else if (mobile.length != 10) {
+                $("#mobile_error").text("Plz Enter Valid Mobile No.");
+                // document.getElementById("mobile_error").innerText = "Plz Enter Valid Mobile No.";
+            } else if (!num_valid.test(mobile)) {
+                $("#mobil_error").text("Enter valid number")
+            } else {
+                $("#mobile_error").text("")
+                // document.getElementById("mobile_error").innerText = "";
+                // digit validation                   
+            }
+
+
+
+            if (password == '') {
+                // alert("Enter Password");
+                $("#password_error").text("Enter Password");
+                // document.getElementById("password_error").innerText = "Enter Password";
+                // errors = errors + 1;
+                errors = false;
+            } else {
+                $("#password_error").text("");
+                // document.getElementById("password_error").innerText = "";
+            }
+
+            if (c_password == '') {
+                // alert("Re-Enter Password");
+                $("#cpass_error").text("Enter Confrim Password");
+                // document.getElementById("cpass_error").innerText = "Enter Confrim Password";
+                // errors = errors + 1;
+                errors = false;
+            } else {
+                $("#cpass_error").text("");
+                // document.getElementById("cpass_error").innerText = "";
+            }
+
+            if (password != '' && c_password != '') {
+                if (password != c_password) {
+                    // alert("wrong Password");
+                    $("#cpass_error").text("Invalid Password");
+                    // document.getElementById("cpass_error").innerText = "Invalid Password";
+                    // errors = errors + 1;
+                    errors = false;
+                }
+            }
+
+            if (errors) {
+                alert("success");
+                my_form = $("#my_form");
+                my_form.submit();
+            } else {
+                event.preventDefault();
+            }
+        }
+        // if (errors == 0) {
+        //     alert("success");
+        // } else {
+        //     event.preventDefault();
+        // }
+
+        // if(name!='' && email!='' && mobile!='' && password!='' && c_password!=''){
+        //     alert("Success");
+        // }
+
+
+
+    </script>
+
+</body>
+
+</html>

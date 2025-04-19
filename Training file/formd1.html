@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="formd1.css">
+    <style>
+        span {
+            /* color: red; */
+            font-size: small;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1 align="center">Registration Form</h1>
+    <div>
+        <form action="#">
+            <div id="form_container">
+                <div class="form_input">
+                    <div>
+                        <label for="name">Name</label>
+                        <span id="name_error"></span>
+                    </div>
+
+                    <input type="text" id="name" onkeypress="valid()" placeholder="Enter Your Name">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="email">Email</label>
+                        <span id="email_error"></span>
+                    </div>
+                    <input type="email" id="email" placeholder="Enter Your Email">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="mobile">Mobile</label>
+                        <span id="mobile_error"></span>
+                    </div>
+                    <input type="text" id="mobile" placeholder="Enter Your Mobile Nummber">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="password">Password</label>
+                        <span id="password_error"></span>
+                    </div>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="c_password">Confrim Password</label>
+                        <span id="cpass_error"></span>
+                    </div>
+                    <input type="password" id="c_password" placeholder="Confirm Password">
+                </div>
+                <div class="form_input">
+                    <input type="reset" value="reset">
+                    <!-- <input type="submit" id="submit" onclick="Validation()"> -->
+                    <button onclick="Validation()"> Submit </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+
+        // function valid(){
+        //     name=document.getElementById("name").value;
+        //     if(name==''){
+        //         name_error=document.getElementById("name_error")
+        //         name_error.style.color="red";       
+        //     }
+        // }
+
+        function Validation() {
+            alert("Working");
+            // f_name="test";
+            // let f_name1="test";
+
+            // let name = document.getElementById("name").value;
+            let name = $("#name").val();
+
+            // let email = document.getElementById("email").value.trim();
+            let email = $("#email").val();
+
+            // let mobile = document.getElementById("mobile").value.trim();
+            let mobile = $("#mobile").val();
+
+            // let password = document.getElementById("password").value;
+            let password = $("#password").val();
+
+            // let c_password = document.getElementById("c_password").value;
+            let c_password = $("#c_password").val();
+
+            errors = 0;
+
+            if (name == '') {   
+                // alert("ENter Your Name");
+                $("#name_error").text("Enter Your name");
+                // document.getElementById("name_error").innerText = "Enter Your Name";
+                errors = errors + 1;
+                name_error.style.color = "red";
+            } else {
+                document.getElementById("name_error").innerText = "";
+            }
+
+            if (email == '') {
+                // alert("Enter Your Email");
+                document.getElementById("email_error").innerText = "Enter Your Email";
+                errors = errors + 1;
+            } else {
+                document.getElementById("email_error").innerText = "";
+            }
+
+            if (mobile == '') {
+                // alert("enter your mobile");
+                document.getElementById("mobile_error").innerText = "Enter Mobile No";
+                errors = errors + 1;
+            } else {
+
+                if (mobile.length != 10) {
+                    document.getElementById("mobile_error").innerText = "Plz Enter Valid Mobile No.";
+
+                } else {
+                    document.getElementById("mobile_error").innerText = "";
+                    // digit validation                    
+
+                }
+            }
+
+            if (password == '') {
+                // alert("Enter Password");
+                document.getElementById("password_error").innerText = "Enter Password";
+                errors = errors + 1;
+            } else {
+                document.getElementById("password_error").innerText = "";
+            }
+
+            if (c_password == '') {
+                // alert("Re-Enter Password");
+                document.getElementById("cpass_error").innerText = "Enter Confrim Password";
+                errors = errors + 1;
+            } else {
+                document.getElementById("cpass_error").innerText = "";
+            }
+
+            if (password != '' && c_password != '') {
+                if (password != c_password) {
+                    // alert("wrong Password");
+                    document.getElementById("cpass_error").innerText = "Invalid Password";
+                    errors = errors + 1;
+                }
+            }
+
+            if (errors == 0) {
+                alert("success");
+            } else {
+                event.preventDefault();
+            }
+            // if(name!='' && email!='' && mobile!='' && password!='' && c_password!=''){
+            //     alert("Success");
+            // }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
