@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_new</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #form_container {
+            margin: auto;
+            padding: 20px;
+            background-color: rgb(255, 255, 255);
+            align-items: center;
+            /* height: 300px; */
+            width: 350px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0px 0px 30px rgb(55, 55, 66);
+            border: 3px solid rgba(216, 236, 194, 0.466);
+            border-radius: 30px;
+        }
+
+        .form_data {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        input {
+            padding: 5px;
+        }
+
+        label {
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .label {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        span {
+            font-size: x-small;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SignUp</h1>
+    <section>
+        <form action="#" method="get" id="my_form">
+            <div id=form_container>
+                <div class="form_data">
+                    <div class="label">
+                        <label for="name">Name</label>
+                        <span id="name_error"></span>
+                        <!-- <span id="name_error">TEST NAME VALIDATION</span> -->
+                    </div>
+                    <input type="text" name="name" id="name" oninput="uppercase()">
+                </div>
+                <div class="form_data">
+                    <div class="label">
+                        <label for="email">Email</label>
+                        <span id="email_error"></span>
+                    </div>
+                    <input type="email" name="email" id="email" oninput="email_case()">
+                </div>
+                <div class="form_data">
+                    <div class="label">
+                        <label for="mobile">Mobile</label>
+                        <span id="mobile_error"></span>
+                    </div>
+                    <!-- <input type="text" name="mobile" oninput="num_case()" id="mobile"> -->
+                    <input type="text" name="mobile" oninput="num_case()" id="mobile">
+                </div>
+                <div class="form_data">
+                    <div class="label">
+                        <label for="password">Password</label>
+                        <span id="password_error"></span>
+                    </div>
+                    <input type="password" name="password" id="password" oninput="pcp_validation()">
+                </div>
+                <div class="form_data">
+                    <div class="label">
+                        <label for="c_password">Confirm Password</label>
+                        <span id="c_password_error"></span>
+                    </div>
+                    <input type="password" name="c_password" id="c_password" oninput="pcp_validation()">
+                </div>
+                <div class="form_data">
+                    <input type="reset" value="Reset">
+                    <button type="submit" onclick="validation()"> Submit </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+
+
+
+    <script>
+        function input_error(element, color) {
+            element.style.borderWidth = "2px";
+            element.style.borderColor = color;
+            element.style.outline = "none";
+        }
+
+        function text_error(element, color) {
+            element.style.fontWeight = "bold";
+            element.style.color = color;
+        }
+
+        function uppercase() {
+            let name_input = document.getElementById("name");
+            let name_error = document.getElementById("name_error");
+            const namereg = /^[a-zA-Z ]+$/;
+            if (namereg.test(name_input.value)) {
+                name_input.value = name_input.value.toUpperCase();
+                name_error.innerText = "";
+                input_error(name_input, "lightgreen");
+
+            } else {
+                name_error.innerText = "INVALID INPUT";
+                input_error(name_input, "red");
+                text_error(name_error, "red");
+            }
+            console.log("wrok");
+
+        }
+
+        function email_case() {
+            let email_input = document.getElementById("email");
+            let email_error = document.getElementById("email_error");
+            email_input.value = email_input.value.toLowerCase();
+            // const emailareg = /^[a-z]*$/;
+            // const emailatreg = /^[@]{1}$/;
+            // const emaildotreg = /^[.]{1}$/;
+            // if (emailareg.test(email_input.value)) {
+            //     if (emailatreg.test(email_input.value)) {
+            //         if (emaildotreg.test(email_input.value)) {
+            //             input_error(email_input, "lightgreen");
+            //             email_error.innerText = "valid";
+            //         }
+            //     }
+            // }
+            const emailReg = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]{2,}$/;
+            if (emailReg.test(email_input.value)) {
+                input_error(email_input, "lightgreen");
+                email_error.innerText = "Valid email";
+                text_error(email_error, "green");
+            } else {
+                email_error.innerText = "Enter valid mail id";
+                input_error(email_input, "red");
+                text_error(email_error, "red");
+            }
+
+        }
+
+        function num_case() {
+            let mobile_input = document.getElementById("mobile");
+            let mobile_error = document.getElementById("mobile_error");
+            const mobilereg = /^[0-9]{10}$/;
+            if (mobilereg.test(mobile_input.value)) {
+                mobile_error.innerText = "";
+                input_error(mobile_input, "lightgreen");
+            }
+            else {
+                mobile_error.innerText = "Enter 10 Digit";
+                input_error(mobile_input, "red");
+                text_error(mobile_error, "red");
+            }
+
+        }
+
+        function pcp_validation() {
+            let password = document.getElementById("password");
+            let c_password = document.getElementById("c_password");
+            let password_error = document.getElementById("password_error");
+            let c_password_error = document.getElementById("c_password_error");
+            if (password.value == "") {
+                password_error.innerText = "Enter Password";
+                text_error(password_error, "red");
+            } else {
+                password_error.innerText = "";
+            }
+            if (c_password.value == "") {
+                c_password_error.innerText = "Enter Confirm Password";
+                text_error(c_password_error, "red");
+
+            } else {
+                c_password_error.innerText = "";
+            }
+            if (password.value != "" && c_password.value != "") {
+                if (password.value == c_password.value) {
+                    c_password_error.innerText = "Valid*";
+                    text_error(c_password_error, "green");
+                    input_error(c_password, "green");
+                    input_error(password, "green");
+                } else {
+                    c_password_error.innerText = "Mismatch Password**";
+                    input_error(c_password, "red");
+                    input_error(password, "red");
+                }
+            }
+        }
+
+        function validation() {
+            event.preventDefault();
+            console.log("validation func");
+
+            let name_input = document.getElementById("name");
+            let email_input = document.getElementById("email");
+            let mobile_input = document.getElementById("mobile");
+            let password = document.getElementById("password");
+            let c_password = document.getElementById("c_password");
+            let name_error = document.getElementById("name_error");
+            let my_form = document.getElementById("my_form");
+            // const mobilereg = /^[0-9]{10}$/;
+
+            let error = true;
+            // console.log(error);
+
+            uppercase();
+            email_case();
+            num_case();
+
+        //     function num_case() {
+        //     let mobile_input = document.getElementById("mobile");
+        //     let mobile_error = document.getElementById("mobile_error");
+        //     const mobilereg = /^[0-9]{10}$/;
+        //     if (mobilereg.test(mobile_input.value)) {
+        //         mobile_error.innerText = "";
+        //         input_error(mobile_input, "lightgreen");
+        //     }
+        //     else {
+        //         mobile_error.innerText = "Enter 10 Digit";
+        //         input_error(mobile_input, "red");
+        //         text_error(mobile_error, "red");
+        //         error=false;
+        //     }
+
+
+        // }
+            pcp_validation();
+            
+            if (name_input.value == ""  || email_input.value== "" || mobile_input.value =="" || password.value=="" || c_password.value=="" || password.value!=c_password.value ){
+                error=false;
+                event.preventDefault();
+                console.log(error)
+            }
+                       
+            // console.log(error);
+
+            if(error){
+                my_form.submit();
+                console.log('submit');
+            }
+        }
+    
+
+        // sobbah ithe thaaana keelaium poten
+        // && mobile_input.value=="" && password.value != c_password.value
+        
+        // console.log("enter Name");
+                    // console.log(pcp_validation);
+
+
+        // console.log(name_input);
+        // console.log(email_input);
+        // console.log(mobile_input);
+        // console.log(password);
+        // console.log(c_password);
+        // console.log(name_error);
+        // function validation() {
+
+        //     event.preventDefault();
+
+        //     let errors = true;
+
+        //     let name_input = document.getElementById("name");
+        //     let email_input = document.getElementById("email");
+        //     let mobile_input = document.getElementById("mobile");
+        //     let password = document.getElementById("password");
+        //     let c_password = document.getElementById("c_password");
+        //     let name_error = document.getElementById("name_error");
+
+        //     uppercase();
+        //     email_case();
+        //     num_case();
+        //     pcp_validation();
+
+        //     if (name_input.value != "" || email_input.value != "" || mobile_input.value != "" || password.value !== c_password.value) {
+        //         errors = false;
+        //         name_error.innerText = "fill all the feild";
+        //         event.preventDefault();
+
+        //     }
+        //     console.log(errors);
+
+        //     if (errors) {
+        //         let my_form = document.getElementById("my_form");
+        //         my_form.submit();
+        //     }
+        // }
+
+
+    </script>
+
+</body>
+
+</html>
