@@ -107,7 +107,7 @@
             <div id="form_data">
                 <input type="reset" value="Reset">
                 <input type="submit" value="Click To Add" onclick="addtable()">
-                <input type="submit" value="Complete" onclick="complete()">
+                <!-- <input type="submit" value="Complete" id="complete"> -->
             </div>
         </form>
 
@@ -116,6 +116,7 @@
             <th>Task</th>
             <th>Date & Time</th>
             <th>Del</th>
+            <th>Complete</th>
             <th>Edit</th>
         </table>
 
@@ -184,15 +185,30 @@
                 input = document.createElement("input")
                 input.setAttribute("type", "button");
                 input.setAttribute("class","button");
-                input.setAttribute("value", "delete");
+                input.setAttribute("value", "Delete");
                 input.setAttribute("onclick", "Delete("+rowcount+")");
                 td.append(input);
+
+                td=row.insertCell();
+                complete=document.createElement("input");
+                complete.setAttribute("type","button");
+                complete.setAttribute("class","button");
+                complete.setAttribute("value","Complete");
+                complete.setAttribute("onclick","complete("+rowcount+")");
+                td.append(complete);
 
                 // task.value="";
                 // task.val("");
                 // date.value = "";
             }
         }
+        function complete(index) {
+            alert(index);
+            table = document.getElementById("table");
+            table.(index);
+            // changeSno();
+        }
+        
         function Delete(index) {
             alert(index);
             table = document.getElementById("table");
@@ -202,19 +218,26 @@
         function changeSno() {
             let sno = document.getElementsByClassName("sno");
             let button=document.getElementsByClassName("button");
+            let complete=document.getElementById("complete");
             alert(sno.length);
             for (i = 0; i < sno.length; i++) {
                 sno[i].innerText = (i+1);
                 button[i].setAttribute("onclick","Delete("+(i+1)+")");
+                complete[i].setAttribute("onclick","complete("+(i+1)+")");
             }
         }
-        function complete(){
-            event.preventDefault();
-            let task=document.getElementsBy()
-            let date=$("#name").val();
-            $("#task").css("text-decoration","line-through");
 
-        }
+
+        // function complete(){
+        //     event.preventDefault();
+        //     alert("working");
+        //     table = document.getElementById("table");
+                       
+
+        //     // let task=document.getElementsBy()
+        //     // let date=$("#name").val();
+        //     // $("#task").css("text-decoration","line-through");
+        // }
     </script>
 
 

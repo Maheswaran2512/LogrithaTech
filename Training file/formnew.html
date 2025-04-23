@@ -214,6 +214,7 @@
             if (password.value == "") {
                 password_error.innerText = "Enter Password";
                 text_error(password_error, "red");
+                input_error(password, "red");
             } else if(!passrex.test(password.value)) {
                 password_error.innerText = "password must contains Uppercase LowerCase number spl";
             }else{
@@ -222,6 +223,7 @@
             if (c_password.value == "") {
                 c_password_error.innerText = "Enter Confirm Password";
                 text_error(c_password_error, "red");
+                input_error(c_password, "red");
 
             } else {
                 c_password_error.innerText = "";
@@ -234,6 +236,7 @@
                     input_error(password, "green");
                 } else {
                     c_password_error.innerText = "Mismatch Password**";
+                    text_error(c_password_error, "red");
                     input_error(c_password, "red");
                     input_error(password, "red");
                 }
