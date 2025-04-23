@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TooDooList Concept</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script src="jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(213, 207, 198);
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1%;
+        }
+
+        #form_container {
+            width: 500px;
+            background-color: azure;
+            margin: auto;
+            padding: 2%;
+            box-sizing: border-box;
+            border: 1px solid black;
+            box-shadow: 0px 0px 30px blueviolet;
+            border-radius: 30px;
+        }
+
+        #form_style {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #form_style+#form_data {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #table {
+            /* margin-top: 10px; */
+            border-collapse: collapse;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        input {
+            border-radius: 30px;
+            padding: 10px;
+        }
+
+        span {
+            color: red
+        }
+
+        @media (max-width:600px) {
+            #form_container {
+                width: auto;
+                margin: 20px;
+                box-sizing: border-box;
+            }
+
+            #form_style {
+                display: block;
+
+            }
+            #form_style input{
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TooDoo List</h1>
+    <div id="form_container">
+        <form action="#">
+            <div id="form_style">
+                <div id="form_data">
+                    <div style="display:flex;justify-content: space-between;">
+                        <label for="task"> Task </label>
+                        <span id="task_error">test</span>
+                    </div>
+                    <div>
+                        <input type="text" id="task">
+                    </div>
+                </div>
+                <div id="form_data">
+                    <div style="display:flex;justify-content: space-between;">
+                        <label for="date"> Date </label>
+                        <span id="date_error"></span>
+                    </div>
+                    <div>
+                        <input type="date" id="date">
+                    </div>
+                </div>
+            </div>
+            <div id="form_data">
+                <input type="reset" value="Reset">
+                <input type="submit" value="Click To Add" onclick="addtable()">
+                <input type="submit" value="Complete" onclick="complete()">
+            </div>
+        </form>
+
+        <table id="table" border="1">
+            <th>Sl.No</th>
+            <th>Task</th>
+            <th>Date & Time</th>
+            <th>Del</th>
+            <th>Edit</th>
+        </table>
+
+
+        <!-- <input type="button" value="delete" onclick="Delete() > -->
+    </div>
+
+    <script>
+        function validate(id,error_msg){
+            let input_field=$("#"+id);
+            if(input_field.val()==""){
+                $("#"+id+"_error").text(error_msg);
+                return false;
+            }else{
+                $("#"+id+"_error").text("");
+                return true;
+            }
+        }
+        function addtable() {
+            event.preventDefault();
+            error = true;
+            // let task = document.getElementById("task");
+            let task = $("#task");
+            // let task_error = document.getElementById("task_error")
+            let date = document.getElementById("date");
+            // let date_error = document.getElementById("date_error");
+            // if (task.value =="") {
+            // if (task.val()=="") {
+            //     task_error.innerHTML = "FillOut*";
+            //     error = false;
+            // } else {
+            //     task_error.innerText = "";
+            // }
+
+            if(!validate("task","Enter Task")){
+                error=false;
+            }
+            if(!validate("date","Enter Date")){
+                error=false;
+            }
+            
+            // if (date.value == "") {
+            //     date_error.innerText = "FillOut*";
+            //     error = false;
+            // } else {
+            //     date_error.innerText = "";
+            // }
+
+            if (error) {
+                table = document.getElementById("table");
+                rowcount = table.rows.length;
+                row = table.insertRow();
+
+                td = row.insertCell();
+                td.setAttribute("class", "sno")
+                td.textContent = rowcount;
+
+                td = row.insertCell();
+                // td.textContent = task.value;
+                td.textContent = task.val();
+
+                td = row.insertCell();
+                td.textContent = date.value;
+
+                td = row.insertCell();
+                input = document.createElement("input")
+                input.setAttribute("type", "button");
+                input.setAttribute("class","button");
+                input.setAttribute("value", "delete");
+                input.setAttribute("onclick", "Delete("+rowcount+")");
+                td.append(input);
+
+                // task.value="";
+                // task.val("");
+                // date.value = "";
+            }
+        }
+        function Delete(index) {
+            alert(index);
+            table = document.getElementById("table");
+            table.deleteRow(index);
+            changeSno();
+        }
+        function changeSno() {
+            let sno = document.getElementsByClassName("sno");
+            let button=document.getElementsByClassName("button");
+            alert(sno.length);
+            for (i = 0; i < sno.length; i++) {
+                sno[i].innerText = (i+1);
+                button[i].setAttribute("onclick","Delete("+(i+1)+")");
+            }
+        }
+        function complete(){
+            event.preventDefault();
+            let task=document.getElementsBy()
+            let date=$("#name").val();
+            $("#task").css("text-decoration","line-through");
+
+        }
+    </script>
+
+
+</body>
+
+</html>

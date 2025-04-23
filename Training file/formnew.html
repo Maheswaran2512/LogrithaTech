@@ -10,6 +10,9 @@
             margin: 0;
             padding: 0;
         }
+        /* font{
+            text-decoration: line-through;
+        } */
 
         #form_container {
             margin: auto;
@@ -108,8 +111,20 @@
                 <div class="form_data">
                     <input type="reset" value="Reset">
                     <button type="submit" onclick="validation()"> Submit </button>
+                    
+                </div>
+                <div>
+                    <table id="table" align="center"  border="1" style="border-collapse: collapse;">
+                        <tr>
+                            <th>Sl.No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                        </tr>
+                    </table>
                 </div>
             </div>
+            
         </form>
     </section>
 
@@ -195,11 +210,14 @@
             let c_password = document.getElementById("c_password");
             let password_error = document.getElementById("password_error");
             let c_password_error = document.getElementById("c_password_error");
+            const passrex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
             if (password.value == "") {
                 password_error.innerText = "Enter Password";
                 text_error(password_error, "red");
-            } else {
-                password_error.innerText = "";
+            } else if(!passrex.test(password.value)) {
+                password_error.innerText = "password must contains Uppercase LowerCase number spl";
+            }else{
+                password_error.innerText ="";
             }
             if (c_password.value == "") {
                 c_password_error.innerText = "Enter Confirm Password";
@@ -222,6 +240,7 @@
             }
         }
 
+        
         function validation() {
             event.preventDefault();
             console.log("validation func");
@@ -242,23 +261,6 @@
             email_case();
             num_case();
 
-        //     function num_case() {
-        //     let mobile_input = document.getElementById("mobile");
-        //     let mobile_error = document.getElementById("mobile_error");
-        //     const mobilereg = /^[0-9]{10}$/;
-        //     if (mobilereg.test(mobile_input.value)) {
-        //         mobile_error.innerText = "";
-        //         input_error(mobile_input, "lightgreen");
-        //     }
-        //     else {
-        //         mobile_error.innerText = "Enter 10 Digit";
-        //         input_error(mobile_input, "red");
-        //         text_error(mobile_error, "red");
-        //         error=false;
-        //     }
-
-
-        // }
             pcp_validation();
             
             if (name_input.value == ""  || email_input.value== "" || mobile_input.value =="" || password.value=="" || c_password.value=="" || password.value!=c_password.value ){
@@ -266,12 +268,27 @@
                 event.preventDefault();
                 console.log(error)
             }
-                       
-            // console.log(error);
-
             if(error){
-                my_form.submit();
-                console.log('submit');
+                // my_form.submit();
+                // console.log('submit');
+
+                table=document.getElementById("table");
+                row=table.insertRow();
+                
+                rowCount=table.rows.length-1;
+
+                td=row.insertCell();
+                td.textContent=rowCount;
+               
+                td=row.insertCell();
+                td.textContent=name_input.value;
+                
+                td=row.insertCell();
+                td.textContent=email_input.value;
+                
+                td=row.insertCell();
+                td.textContent=mobile_input.value;
+
             }
         }
     
