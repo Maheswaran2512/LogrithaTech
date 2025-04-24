@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
         }
+
         /* font{
             text-decoration: line-through;
         } */
@@ -69,7 +70,7 @@
 
     <h1>SignUp</h1>
     <section>
-        <form action="#" method="get" id="my_form">
+        <form action="http://localhost/Maheswaran/validation.php" method="get" id="my_form">
             <div id=form_container>
                 <div class="form_data">
                     <div class="label">
@@ -111,10 +112,10 @@
                 <div class="form_data">
                     <input type="reset" value="Reset">
                     <button type="submit" onclick="validation()"> Submit </button>
-                    
+
                 </div>
                 <div>
-                    <table id="table" align="center"  border="1" style="border-collapse: collapse;">
+                    <table id="table" align="center" border="1" style="border-collapse: collapse;">
                         <tr>
                             <th>Sl.No</th>
                             <th>Name</th>
@@ -124,7 +125,7 @@
                     </table>
                 </div>
             </div>
-            
+
         </form>
     </section>
 
@@ -165,17 +166,8 @@
             let email_input = document.getElementById("email");
             let email_error = document.getElementById("email_error");
             email_input.value = email_input.value.toLowerCase();
-            // const emailareg = /^[a-z]*$/;
-            // const emailatreg = /^[@]{1}$/;
-            // const emaildotreg = /^[.]{1}$/;
-            // if (emailareg.test(email_input.value)) {
-            //     if (emailatreg.test(email_input.value)) {
-            //         if (emaildotreg.test(email_input.value)) {
-            //             input_error(email_input, "lightgreen");
-            //             email_error.innerText = "valid";
-            //         }
-            //     }
-            // }
+
+
             const emailReg = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]{2,}$/;
             if (emailReg.test(email_input.value)) {
                 input_error(email_input, "lightgreen");
@@ -215,10 +207,10 @@
                 password_error.innerText = "Enter Password";
                 text_error(password_error, "red");
                 input_error(password, "red");
-            } else if(!passrex.test(password.value)) {
+            } else if (!passrex.test(password.value)) {
                 password_error.innerText = "password must contains Uppercase LowerCase number spl";
-            }else{
-                password_error.innerText ="";
+            } else {
+                password_error.innerText = "";
             }
             if (c_password.value == "") {
                 c_password_error.innerText = "Enter Confirm Password";
@@ -243,7 +235,7 @@
             }
         }
 
-        
+
         function validation() {
             event.preventDefault();
             console.log("validation func");
@@ -260,87 +252,50 @@
             let error = true;
             // console.log(error);
 
-            uppercase();
-            email_case();
-            num_case();
+            if (!uppercase()) {
+                error = false;
+            }
 
-            pcp_validation();
-            
-            if (name_input.value == ""  || email_input.value== "" || mobile_input.value =="" || password.value=="" || c_password.value=="" || password.value!=c_password.value ){
+            if(!email_case()){
                 error=false;
+            }
+
+            if(!num_case()){
+                error=false;
+            }
+
+            if(!pcp_validation()){
+                error=false;
+            }
+
+            if (name_input.value == "" || email_input.value == "" || mobile_input.value == "" || password.value == "" || c_password.value == "" || password.value != c_password.value) {
+                error = false;
                 event.preventDefault();
                 console.log(error)
             }
-            if(error){
-                // my_form.submit();
-                // console.log('submit');
+            if (error) {
+                my_form.submit();
+                console.log('submit');
 
-                table=document.getElementById("table");
-                row=table.insertRow();
-                
-                rowCount=table.rows.length-1;
+                table = document.getElementById("table");
+                row = table.insertRow();
 
-                td=row.insertCell();
-                td.textContent=rowCount;
-               
-                td=row.insertCell();
-                td.textContent=name_input.value;
-                
-                td=row.insertCell();
-                td.textContent=email_input.value;
-                
-                td=row.insertCell();
-                td.textContent=mobile_input.value;
+                rowCount = table.rows.length - 1;
+
+                td = row.insertCell();
+                td.textContent = rowCount;
+
+                td = row.insertCell();
+                td.textContent = name_input.value;
+
+                td = row.insertCell();
+                td.textContent = email_input.value;
+
+                td = row.insertCell();
+                td.textContent = mobile_input.value;
 
             }
         }
-    
-
-        // sobbah ithe thaaana keelaium poten
-        // && mobile_input.value=="" && password.value != c_password.value
-        
-        // console.log("enter Name");
-                    // console.log(pcp_validation);
-
-
-        // console.log(name_input);
-        // console.log(email_input);
-        // console.log(mobile_input);
-        // console.log(password);
-        // console.log(c_password);
-        // console.log(name_error);
-        // function validation() {
-
-        //     event.preventDefault();
-
-        //     let errors = true;
-
-        //     let name_input = document.getElementById("name");
-        //     let email_input = document.getElementById("email");
-        //     let mobile_input = document.getElementById("mobile");
-        //     let password = document.getElementById("password");
-        //     let c_password = document.getElementById("c_password");
-        //     let name_error = document.getElementById("name_error");
-
-        //     uppercase();
-        //     email_case();
-        //     num_case();
-        //     pcp_validation();
-
-        //     if (name_input.value != "" || email_input.value != "" || mobile_input.value != "" || password.value !== c_password.value) {
-        //         errors = false;
-        //         name_error.innerText = "fill all the feild";
-        //         event.preventDefault();
-
-        //     }
-        //     console.log(errors);
-
-        //     if (errors) {
-        //         let my_form = document.getElementById("my_form");
-        //         my_form.submit();
-        //     }
-        // }
-
 
     </script>
 
