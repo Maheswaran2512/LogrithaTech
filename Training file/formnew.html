@@ -78,7 +78,8 @@
                         <span id="name_error"></span>
                         <!-- <span id="name_error">TEST NAME VALIDATION</span> -->
                     </div>
-                    <input type="text" name="name" id="name" oninput="uppercase()">
+                    <!-- <input type="text" name="name" id="name" oninput="namecase()"> -->
+                    <input type="text" name="name" id="name" oninput="name_case()" >
                 </div>
                 <div class="form_data">
                     <div class="label">
@@ -144,7 +145,40 @@
             element.style.color = color;
         }
 
-        function uppercase() {
+        function input_validation(id, error_msg) {
+            let feild_name = document.getElementById(id);
+            let feild_error = document.getElementById(id + "_error");
+            if (feild_name.value == "") {
+                alert("");
+                feild_error.innerText = error_msg;
+                input_error(feild_name, "red");
+                text_error(feild_error, "red");
+                return false;
+            } else {
+                feild_error.innerText = "";
+                input_error(feild_name, "green");
+                text_error(feild_error, "green");
+                // feild_name + casee();
+                return true;
+            }
+        }
+
+        // function name_check() {
+        //     let name_input = document.getElementById("name");
+        //     let name_error = document.getElementById("name_error");
+        //     if (name_input.value == "") {
+        //         // alert("Enter");
+        //         name_error.innerText = "Enter Your Name";
+        //         error = false;
+        //         input_error(name_input, "red");
+        //         text_error(name_error, "red");
+        //     } else {
+        //         name_error.innerText = "";
+        //         uppercase();
+        //     }
+        // }
+
+        function name_case() {
             let name_input = document.getElementById("name");
             let name_error = document.getElementById("name_error");
             const namereg = /^[a-zA-Z ]+$/;
@@ -252,20 +286,44 @@
             let error = true;
             // console.log(error);
 
-            if (!uppercase()) {
+            
+
+            if(!input_validation("name", "Enter Your Name")){
+                error=false;
+            }else{
+                name_case();
+            }
+
+            if(!input_validation("email","Enter Your Email NEW")){
+                error=false;
+            }else{
+                email_casae();
+            }
+
+            if(!input_validation("mobile", "Enter Your Mobile Number NEw")){
+                error=false;
+            }else{
+                num_case();
+            }
+
+            // if (!name_check()) {
+            //     error = false;
+            // }
+
+            // if (!uppercase()) {
+            //     error = false;
+            // }
+
+            // if (!email_case()) {
+            //     error = false;
+            // }
+
+            // if (!num_case()) {
+            //     error = false;
+            // }
+
+            if (!pcp_validation()) {
                 error = false;
-            }
-
-            if(!email_case()){
-                error=false;
-            }
-
-            if(!num_case()){
-                error=false;
-            }
-
-            if(!pcp_validation()){
-                error=false;
             }
 
             if (name_input.value == "" || email_input.value == "" || mobile_input.value == "" || password.value == "" || c_password.value == "" || password.value != c_password.value) {
