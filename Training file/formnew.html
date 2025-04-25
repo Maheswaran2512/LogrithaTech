@@ -79,7 +79,7 @@
                         <!-- <span id="name_error">TEST NAME VALIDATION</span> -->
                     </div>
                     <!-- <input type="text" name="name" id="name" oninput="namecase()"> -->
-                    <input type="text" name="name" id="name" oninput="name_case()" >
+                    <input type="text" name="name" id="name" oninput="name_case()">
                 </div>
                 <div class="form_data">
                     <div class="label">
@@ -203,14 +203,19 @@
 
 
             const emailReg = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]{2,}$/;
+            if (email_input == "") {
+
+            }
             if (emailReg.test(email_input.value)) {
                 input_error(email_input, "lightgreen");
                 email_error.innerText = "Valid email";
                 text_error(email_error, "green");
+                return true;
             } else {
                 email_error.innerText = "Enter valid mail id";
                 input_error(email_input, "red");
                 text_error(email_error, "red");
+                return false;
             }
 
         }
@@ -247,11 +252,13 @@
                 password_error.innerText = "";
             }
             if (c_password.value == "") {
+                // alert("if");
                 c_password_error.innerText = "Enter Confirm Password";
                 text_error(c_password_error, "red");
                 input_error(c_password, "red");
 
             } else {
+                // alert("error")
                 c_password_error.innerText = "";
             }
             if (password.value != "" && c_password.value != "") {
@@ -286,23 +293,23 @@
             let error = true;
             // console.log(error);
 
-            
 
-            if(!input_validation("name", "Enter Your Name")){
-                error=false;
-            }else{
+
+            if (!input_validation("name", "Enter Your Name")) {
+                error = false;
+            } else {
                 name_case();
             }
 
-            if(!input_validation("email","Enter Your Email NEW")){
-                error=false;
-            }else{
-                email_casae();
+            if (!input_validation("email", "Enter Your Email NEW")) {
+                error = false;
+            } else{
+                email_case();
             }
 
-            if(!input_validation("mobile", "Enter Your Mobile Number NEw")){
-                error=false;
-            }else{
+            if (!input_validation("mobile", "Enter Your Mobile Number NEw")) {
+                error = false;
+            } else {
                 num_case();
             }
 
@@ -331,6 +338,7 @@
                 event.preventDefault();
                 console.log(error)
             }
+
             if (error) {
                 my_form.submit();
                 console.log('submit');
@@ -354,6 +362,7 @@
 
             }
         }
+
 
     </script>
 

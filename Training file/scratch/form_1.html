@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #form_container {
+            background-color: antiquewhite;
+            width: 350px;
+            /* height: auto; */
+            margin: auto;
+            padding: 20px;
+            border: 1px solid brown;
+            border-radius: 30px;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 30px salmon;
+        }
+
+        .label {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0px;
+        }
+
+        .label:last-child {
+            margin-top: 20px;
+        }
+
+        input {
+            /* margin: 10px; */
+            width: 285px;
+            /* height: 30px; */
+            flex-basis: 100%;
+            border-radius: 30px;
+            padding: 10px;
+        }
+        span{
+            color:red;
+            font-size: smaller;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form Validation</h1>
+    <div id="form_container">
+        <form action="Maheswaran/validation.php" id="my_form">
+            <div class="label">
+                <label for="name">Name</label> <span id="name_error"></span>
+            </div>
+            <input type="text" id="name" name="name" placeholder="Enter Your Name" oninput="name()">
+            <div class="label">
+                <label for="email">Email</label><span id="email_error"></span>
+            </div>
+            <input type="email" id="email" name="email" placeholder="Enter Your Email" oninput="email()">
+            <div class="label">
+                <label for="mobile">Mobile</label><span id="mobile_error"></span>
+            </div>
+            <input type="text" id="mobile" name="mobile" placeholder="Enter Your Number" oninput="mobile()">
+            <div class="label">
+                <label for="password">Password</label><span id="password_error"></span>
+            </div>
+            <input type="password" id="password" name="password" placeholder="Enter Your Password" oninput="password()">
+            <div class="label">
+                <label for="c_password">Confrim Password</label><span id="c_password_error"></span>
+            </div>
+            <input type="password" id="c_password" name="c_password" placeholder="Enter Your Confrim Password"
+                oninput="c_password()">
+            <div class="label">
+                <input type="reset"> <input type="submit" onclick="validation()">
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+
+        function input_validation(feild_inputs, feild_errors) {
+            for (i = 0; i < feild_inputs.length; i++) {
+                input = document.getElementById(feild_inputs[i]);
+                error = input.getAttribute("placeholder");
+                input_error = document.getElementById(feild_inputs[i] + "_error");
+                if (input.value == "") {
+                    // input_error.innerText=feild_errors[i];
+                    input_error.innerText = error;
+                } else {
+                    input_error.innerText = "";
+                }
+                // alert(input.value);
+            }
+        }
+
+        function validation() {
+            event.preventDefault();
+            feild_inputs = ["name", "email", "mobile", "password", "c_password"];
+            feild_errors = ["Please Enter Your Name", "Please Enter Your Email", "Please Enter Your Mobile", "Please Enter Your Password", "Please Enter Your Confrim Password"];
+            input_validation(feild_inputs, feild_errors);
+        }
+
+    </script>
+
+</body>
+
+</html>
