@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* text-align: justify; */
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            height: 80px;
+            border-radius: 5px;
+            background-color: #a0aecd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1);
+            box-shadow: 0px 10px 50px #a0aecd;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 30px
+        }
+
+
+        .ancher1 {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .ancher1:hover {
+            color: aquamarine;
+            transition: color 0.3s ease;
+        }
+
+
+        .main_art {
+            margin-top: 100px;
+            margin-bottom: 100px;
+            padding: 0px 80px 0px 80px;
+            border: 1px;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+            height: auto;
+        }
+
+        section+hr {
+            margin: 10px;
+        }
+
+        section .heading:first-child {
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+
+        .home-main {
+            height: 500px;
+            width: 100%;
+            display: flex;
+        }
+
+        .home-content {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .link {
+            display: flex;
+            gap: 25px;
+        }
+
+        .link a {
+            color: #a4b5db;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .home-description {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        article {
+            border: 1px solid lightblue;
+            background-color: #dfe9ff;
+            padding: 15px;
+            border-radius: 30px;
+            margin: 10px 0px;
+            line-height: 22px;
+            text-align: justify;
+        }
+
+        .intern {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .intern_left {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .intern_right {
+            width: 40%;
+            padding: 10px;
+        }
+
+        .intern_right aside {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 50%);
+        }
+
+        .intern_right aside .box {
+            padding: 5px;
+            height: 150px;
+        }
+
+        .intern_right aside div>img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .box {
+            border: 1px solid black;
+            border-radius: 1%;
+            height: 120px;
+            margin: 5px;
+        }
+
+        #project_list {
+            margin: 0px 100px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #project_list h3 {
+            text-transform: uppercase;
+            font-weight: lighter;
+            /* text-decoration: underline; */
+            line-height: 30px;
+            text-align: justify;
+        }
+
+        .project_box {
+            width: 300px;
+            padding: 10px;
+            border-radius: 10px;
+            /* background-color: #a4b5db; */
+            box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 3%);
+            position: static;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            flex-grow: 1;
+            /* flex-shrink: 0; */
+        }
+
+
+
+        #form_container {
+            border: 1px solid black;
+            margin: auto;
+            width: 500px;
+            padding: 20px;
+            background-color: #a4b5db;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+
+        .form_data {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        label {
+            flex-basis: 100px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #a0aecd;
+            outline: none;
+            box-shadow: 0px 0px 40px #a0aecd;
+        }
+
+
+        #submitbtn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #submitbtn>input {
+            width: fit-content;
+            /* float: inline-end; */
+            margin: 10px;
+            font-weight: bold;
+        }
+
+
+        #success {
+            color: rgb(98, 0, 255);
+            text-transform: uppercase;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+
+        .footer {
+            height: 50px;
+            background-color: #a0aecd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1);
+            box-shadow: 0px 10px 50px #a0aecd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid #ccc;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-text {
+            box-shadow: 10px 10px 50px #a4b5db;
+            font-weight: bolder;
+            font-style: italic;
+            letter-spacing: 5px;
+        }
+
+        /* @media (min-width:767px) and (max-width:1023px) {
+            .form_data {
+                flex-direction: column;
+            }
+
+            label {
+                flex-basis: 0px;
+                align-items: flex-end;
+            }
+
+            #form_container {
+                width: 500px;
+                background-color: #dfe9ff;
+            }
+        } */
+
+        @media screen and (max-width:767px) {
+
+            .main_art {
+                padding: 0px 30px 0px 30px;
+            }
+
+            .home-main {
+                display: block;
+                justify-content: center;
+                align-items: center;
+                height: auto;
+            }
+
+            .home-content {
+                width: 100%;
+            }
+
+            .home-description {
+                width: 100%;
+                margin-top: 50px;
+                text-align: center;
+            }
+
+            .intern {
+                /* display: block; */
+                display: flex;
+                flex-direction: column;
+                gap: 0px;
+            }
+
+            .intern_left {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .intern_right {
+                width: 100%;
+                padding: 0px;
+            }
+
+            .intern_right aside {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                gap: 10px;
+                /* grid-template-columns: repeat(auto-fill, 100%);
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                row-gap: 10px;
+                justify-content: center;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 100%); */
+            }
+
+            .box {
+                width: 320px;
+                height: 200px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="header">
+        <!-- figure -> Img -->
+        <figure>
+            <img src="logo.png" alt="logo" class="logo" width="100" height="70">
+        </figure>
+        <nav class="nav">
+            <ul class="nav-list">
+                <a class="ancher1" href="#home">Home</a>
+                <a class="ancher1" href="#about">About</a></li>
+                <a class="ancher1" href="#experience">Experience</a>
+                <a class="ancher1" href="#projects">Projects</a>
+                <a class="ancher1" href="#contact">Contact</a>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main_art">
+
+        <section class="home" id="home">
+            <div class="home-main">
+                <div class="home-content">
+                    <h2 class="heading">Welcome to My Portfolio</h2>
+                    <h2>MAHESWARAN D</h2>
+                    <div class="link">
+                        <a href="#">Email</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">GitHub</a>
+                        <a href="#">Call</a>
+                    </div>
+                </div>
+
+                <div class="home-description">
+                    <p class="description">This is a brief overview of my skills and experiences.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <hr style="margin:10px;">
+
+        <section class="about" id="about">
+            <h1 class="heading">About Me</h1>
+            <!-- #target
+             #title
+             #anchor -->
+            <p class="description">I am a <a href="" target="_blank" title="WEB_DEVOLOP">web developer</a> with a
+                passion for creating dynamic and responsive websites.</p>
+        </section>
+
+        <hr>
+
+        <section class="experience" id="experience">
+            <h1 class="heading">Experience</h1>
+            <div class="intern">
+                <div class="intern_left">
+                    <article>
+                        <h2>SAMCORE SOLUTION</h2><br>
+                        <h3>Intern | July 2024 - August 2024 | Thiruchirappalli <br> <i> Internet of Things | Offlice
+                            </i> </h3>
+                        <li>Learn about IOT implementation in various components and the integration of embedded systems
+                            with IOT</li>
+                    </article>
+                    <article>
+                        <h2>BSNL - Bharat Sanchar Nigam Limited</h2><br>
+                        <h3> Intern | 3rd July 2023 - 7th July 2023 | Thanjavur <Br> <i>Fundamentals of Telecom, Digital
+                                Communication, Optical Fiber Concepts, and Broadband Technology | Offline </i> </h3>
+                        <li> Hands-on experience in telecom fundamentals, digital communication,
+                            optical fiber concepts, and broadband technology. Gained practical
+                            knowledge in the core areas of telecommunications and network systems.</li>
+                    </article>
+                </div>
+                <div class="intern_right">
+                    <aside>
+                        <div class="box"> <img src="pongal.png" alt="Alter Image"></div>
+                        <div class="box"> <img src="pongal.png" alt="Alter Image"></div>
+                        <div class="box"> <img src="pongal.png" alt="Alter Image"></div>
+                        <div class="box"> <img src="pongal.png" alt="Alter Image"></div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <hr style="margin:10px;">
+
+        <section class="projects" id="projects">
+            <h1 class="heading">Projects</h1>
+            <div id="project_list">
+                <div class="project_box">
+                    <h3>Design an Implementation of Sensor for a Small-MIMO Wireless Networks</h3>
+                    <p>Final Year Project</p>
+                </div>
+                <div class="project_box">
+                    <h3>Portfolio Website</h3>
+                    <p>Tools: HTML | CSS | JavaScript | JSON</p>
+                </div>
+                <div class="project_box">
+                    <h3>Smart Irrigation System Using Arduino</h3>
+                    <li>Awarded 3rd Prize at Mini Project Expo – ISTE Student Chapter [TN 217]</li>
+                    <li>Secured 2nd Place in Electrovibez’23 – National Level Technical Symposium</li>
+                    <p>A Smart Irrigation System using Arduino is an automated system designed to optimize
+                        water usage for farming, gardening, or landscaping. It monitors soil moisture levels and
+                        controls water flow based on real-time conditions, reducing water waste and ensuring
+                        efficient irrigation.</p>
+                </div>
+                <div class="project_box">
+                    <h3>Web Interface Development</h3>
+                    <p>Tools: HTML, CSS</p>
+                </div>
+            </div>
+
+        </section>
+
+        <hr style="margin:10px;">
+
+        <section class="contact" id="contact">
+            <h1 class="heading">Contact Me</h1>
+
+            <p class="description">Feel free to reach out via email or LinkedIn.</p>
+            <div id="form_container">
+                <form action="validation.php" id="my_form">
+
+                    <div id="form_datas">
+                        <div class="form_data">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Enter Your Name">
+                        </div>
+                        <div class="form_data">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter Your Email">
+                        </div>
+                        <div class="form_data">
+                            <label for="mobile">Mobile</label>
+                            <input type="text" id="mobile" placeholder="Enter Your Mobile Number">
+                        </div>
+                        <div class="form_data">
+                            <label for="message">Message</label>
+                            <textarea rows="5" id="message" placeholder="Enter Your Message"></textarea>
+                        </div>
+                        <div id="submitbtn">
+                            <input type="reset">
+                            <span id="success">We will ReachYou Soon</span>
+                            <input type="submit" value="Submit" onclick="validation()">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">&copy 2025 My Resume. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function box_error(box,color){
+            box.style.borderWidth="2px";
+            box.style.borderColor=color;
+            box.style.outline="none";
+        }
+        function input_validation(feild_inputs, functions) {
+            for (i = 0; i < feild_inputs.length; i++) {
+                input = document.getElementById(feild_inputs[i]);
+                error = input.getAttribute("placeholder");
+                input_error = document.getElementById(feild_inputs[i] + "_error");
+                if (input.value == "") {
+                    box_error(input,"red");
+                } else {
+                    box_error(input,"green");
+                    for (j = 0; j < functions[i].length; j++) {
+                        console.log(functions[i][j]);
+                        eval(functions[i][j]);
+                    }
+                }
+            }
+        }
+        function email_validation(){
+
+        }
+        function mobilereg_validation(){
+
+        }
+
+        function validation() {
+            event.preventDefault();
+            //req documents for validation
+            feild_inputs = ["name", "email", "mobile", "message"];
+            email_fun = ["email_validation()"];
+            mobile_fun = ["mobilereg_validation()"];
+            functions = ["",email_fun, mobile_fun,""];
+            input_validation(feild_inputs, functions);
+            error_flag = false;
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

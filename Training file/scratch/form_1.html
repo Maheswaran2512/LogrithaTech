@@ -46,8 +46,9 @@
             border-radius: 30px;
             padding: 10px;
         }
-        span{
-            color:red;
+
+        span {
+            color: red;
             font-size: smaller;
             text-transform: uppercase;
             font-weight: bold;
@@ -62,24 +63,23 @@
             <div class="label">
                 <label for="name">Name</label> <span id="name_error"></span>
             </div>
-            <input type="text" id="name" name="name" placeholder="Enter Your Name" oninput="name()">
+            <input type="text" id="name" name="name" placeholder="Enter Your Name">
             <div class="label">
                 <label for="email">Email</label><span id="email_error"></span>
             </div>
-            <input type="email" id="email" name="email" placeholder="Enter Your Email" oninput="email()">
+            <input type="email" id="email" name="email" placeholder="Enter Your Email">
             <div class="label">
                 <label for="mobile">Mobile</label><span id="mobile_error"></span>
             </div>
-            <input type="text" id="mobile" name="mobile" placeholder="Enter Your Number" oninput="mobile()">
+            <input type="text" id="mobile" name="mobile" placeholder="Enter Your Number" oninput="mobilereg_validation()">
             <div class="label">
                 <label for="password">Password</label><span id="password_error"></span>
             </div>
-            <input type="password" id="password" name="password" placeholder="Enter Your Password" oninput="password()">
+            <input type="password" id="password" name="password" placeholder="Enter Your Password">
             <div class="label">
                 <label for="c_password">Confrim Password</label><span id="c_password_error"></span>
             </div>
-            <input type="password" id="c_password" name="c_password" placeholder="Enter Your Confrim Password"
-                oninput="c_password()">
+            <input type="password" id="c_password" name="c_password" placeholder="Enter Your Confrim Password">
             <div class="label">
                 <input type="reset"> <input type="submit" onclick="validation()">
             </div>
@@ -89,28 +89,97 @@
 
     <script>
 
-        function input_validation(feild_inputs, feild_errors) {
+        function input_validation(feild_inputs, functions) {
             for (i = 0; i < feild_inputs.length; i++) {
                 input = document.getElementById(feild_inputs[i]);
                 error = input.getAttribute("placeholder");
                 input_error = document.getElementById(feild_inputs[i] + "_error");
                 if (input.value == "") {
-                    // input_error.innerText=feild_errors[i];
+                    // input_error.innerText = feild_errors[i];
                     input_error.innerText = error;
                 } else {
                     input_error.innerText = "";
+                    for (j = 0; j < functions[i].length; j++) {
+                        // alert("run");
+                        console.log(functions[i][j]);
+                        // functions[i][j];
+                        eval(functions[i][j]);
+                    }
+                } // alert(input.value);
+            }
+        }
+        function upper() {// alert("upper case");
+        }// upper();
+        function email_validation() { // alert("email case");
+        }
+
+        function mobilereg_validation() {
+            // alert("len case");
+            let mobile = document.getElementById("mobile").value.trim();
+            let mobile_error = document.getElementById("mobile_error");
+            const mobilereg = /^[6/7/8/9][0-9]+$/;
+            // const mobilenotreg = /^[0/1/2/3/4/5][0-9]+$/;
+            if (mobilereg.test(mobile)) {
+                if (mobile.length != 10) {
+                    mobile_error.innerText = "Enter 10 Digit";
+                } else {
+                    mobile_error.innerText = "";
                 }
-                // alert(input.value);
+            } 
+            // else if(mobilenotreg.test(mobile)){
+            //     mobile_error.innerText = "Mobile no starts with 6 7 8 9";
+            // }
+            else {
+                mobile_error.innerText = "Enter Valid Number";
             }
         }
 
-        function validation() {
-            event.preventDefault();
-            feild_inputs = ["name", "email", "mobile", "password", "c_password"];
-            feild_errors = ["Please Enter Your Name", "Please Enter Your Email", "Please Enter Your Mobile", "Please Enter Your Password", "Please Enter Your Confrim Password"];
-            input_validation(feild_inputs, feild_errors);
+        // function mobilereg_validation() {
+        //     // alert("mobile case");
+        //     let mobile = document.getElementById("mobile").value.trim();
+        //     let mobile_error = document.getElementById("mobile_error");
+        //     // const mobilereg = /^[0-9]{10}$/;
+        //     // if(!mobilereg.test(mobile)){
+        //     //     mobile_error.innerText="Enter Valid Number";
+        //     // }else{
+        //     //     mobile_error.innerText="";
+        //     // }
+        // }
+        function password_validation() {
+        }
+        function c_password_validation() {
         }
 
+        // function mobile_validation() {
+        //     // mobile_fun=["length_validation()","mobilereg_validation()"];
+        //     mobile_fun = ["mobilereg_validation()"];
+        //     feild_inputs = ["mobile"];
+        //     functions = [mobile_fun];
+        //     input_validation(feild_inputs, functions);
+        // }
+
+        function validation() {
+            event.preventDefault();
+            //req documents for validation
+            feild_inputs = ["name", "email", "mobile", "password", "c_password"];
+            feild_errors = ["Please Enter Your Name", "Please Enter Your Email", "Please Enter Your Mobile", "Please Enter Your Password", "Please Enter Your Confrim Password"];
+            name_fun = ["upper()"];
+            email_fun = ["email_validation()"];
+            mobile_fun = ["mobilereg_validation()"];
+            password_fun = ["password_validation()"];
+            c_password_fun = ["c_password_validation()"];
+            functions = [name_fun, email_fun, mobile_fun, password_fun, c_password_fun];
+            // input_validation(feild_inputs, feild_errors);
+
+            //input validation parameter passing by array
+            input_validation(feild_inputs, functions);
+            error_flag = false;
+
+            // if(!input_validation(feild_inputs[0],feild_errors[0])){
+            //     error_flag=false;
+            // }else{
+            // }
+        }
     </script>
 
 </body>
