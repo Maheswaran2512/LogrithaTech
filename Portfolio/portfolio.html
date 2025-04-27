@@ -16,14 +16,14 @@
         .header {
             display: flex;
             align-items: center;
-            height: 80px;
+            /* height: 80px; */
+            height: 70px;
             border-radius: 5px;
             background-color: #a0aecd;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 70px;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1);
             box-shadow: 0px 10px 50px #a0aecd;
@@ -229,7 +229,7 @@
         .form_data {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            /* justify-content: space-between; */
             gap: 20px;
             padding: 10px;
         }
@@ -245,12 +245,17 @@
             flex-basis: 0px;
             align-content: left;
             font-weight: bold;
-
         }
 
         .radio_form>div>div {
-            align-items: center;
+            flex-direction: row !important;
+            justify-content: space-between;
             margin-left: 10px;
+        }
+
+        .radio_form .submit {
+            width: fit-content;
+            margin-left: 100px;
         }
 
         .radio_form input {
@@ -632,8 +637,8 @@
             <h1 class="heading">Contact Me</h1>
 
             <p class="description">Feel free to reach out via email or LinkedIn.</p>
-            <div id="form_container">
-                <form action="validation.php" method="get" id="my_form">
+            <form action="validation.php" id="my_form" method="get">
+                <div id="form_container">
                     <div id="form_datas">
                         <div class="form_data">
                             <label for="name">Name</label>
@@ -645,7 +650,8 @@
                         </div>
                         <div class="form_data">
                             <label for="mobile">Mobile</label>
-                            <input type="text" id="mobile" placeholder="Enter Your Mobile Number" oninput="mobile_validation()">
+                            <input type="text" id="mobile" placeholder="Enter Your Mobile Number"
+                                oninput="mobile_validation()">
                         </div>
                         <div class="form_data">
                             <label for="message">Message</label>
@@ -653,55 +659,61 @@
                         </div>
                         <div class="form_data radio_form">
                             <div>
-                                <label for="">You are</label>
+                                <div
+                                    style="display: flex; justify-content: space-between;margin-left: 0px;font-weight: bold;">
+                                    <label for="">You are</label><span id="radio_error">radio test span</span>
+                                </div>
                                 <div>
-                                    <input type="radio" id="student" class="radio_input" name="options" value="Student">
+                                    <input type="radio" id="student" class="radio_input" name="radio" value="Student">
                                     <label for="student">Student</label>
-                                    <input type="radio" id="faculty" class="radio_input" name="options" value="Faculty">
+                                    <input type="radio" id="faculty" class="radio_input" name="radio" value="Faculty">
                                     <label for="faculty">Faculty</label>
-                                    <input type="radio" id="others" class="radio_input" name="options" value="Others">
+                                    <input type="radio" id="others" class="radio_input" name="radio" value="Others">
                                     <label for="others">Others</label>
+                                    <input type="submit" class="submit" id="radio" value="Proceed"
+                                        onclick="radio_validation()">
                                 </div>
                             </div>
                         </div>
                         <div class="form_data checkbox_form">
                             <div>
-
-                                <label for="">Required Service</label>
+                                <label for="">Required Service</label><span id="checkbox_error">checkbox_error</span>
                                 <div>
                                     <div>
-                                        <input type="checkbox" id="webdevelopment" name="webdevelopment"
+                                        <input type="checkbox" id="webdevelopment" name="checkbox"
                                             value="Web Development" />
                                         <label for="webdevelopment">Web Development</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="frontend" name="frontend" value="Front_End">
+                                        <input type="checkbox" id="frontend" name="checkbox" value="Front_End">
                                         <label for="frontend">Front-end</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="backend" name="backend" value="Back_End">
+                                        <input type="checkbox" id="backend" name="checkbox" value="Back_End">
                                         <label for="backend">Back-end</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="fullstack" name="fullstack" value="Full_Stacks">
+                                        <input type="checkbox" id="fullstack" name="checkbox" value="Full_Stacks">
                                         <label for="fullstack">Full Stack Development</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="dbs" name="dbs" value="Data-Base_Service">
-                                        <label for="bbs">Data-Base Service</label>
+                                        <input type="checkbox" id="dbs" name="checkbox" value="Data-Base_Service">
+                                        <label for="dbs">Data-Base Service</label>
                                     </div>
                                 </div>
+                                <input type="submit" class="submit" id="radio" value="Proceed"
+                                    onclick="checkbox_validation()">
                             </div>
                         </div>
                         <div id="submitbtn">
                             <input type="reset">
                             <span id="success">We will ReachYou Soon</span>
                             <!-- <button type="submit" value="Submit" onclick="validation()">Submit</button> -->
-                            <input type="submit" value="Submit1" id="submit" />
+                            <input type="submit" value="Submit" id="submit_form" />
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </section>
 
     </main>
@@ -711,20 +723,25 @@
     </footer>
 
     <script>
-        let submit = document.getElementById("submit");
+
+        let submit = document.getElementById("submit_form");
         submit.addEventListener("click", function () {
             event.preventDefault();
-            let my_form = document.getElementById("my_form")[0];
+            let my_form = document.getElementById("my_form");
             feild_inputs = ["name", "email", "mobile", "message"];
             if (input_validation(feild_inputs)) {
-                console.log('submit');
-                my_form.submit();
+                console.log("submit");
+                my_form.submit()
+            } else {
+                console.log("error")
             }
+            // if (email_validation() && checkbox_validation()) {
+            // }
+            // else{
+            //     document.getElementById("radio_error").innerText="select anyone to continue";
+            //     document.getElementById("checkbox_error").innerText="Select Service You Need";
+            // }
         });
-
-        // $("#submit").click(function () {
-        //     //jQuery
-        // })
 
         function box_error(box, color) {
             box.style.borderWidth = "2px";
@@ -732,17 +749,13 @@
             box.style.outline = "none";
         }
 
-        // function name_validation() {
-        //     alert("name");
-        // }
-
         function email_validation() {
-            // alert("email");
             let email_input = document.getElementById("email");
             email_input.value = email_input.value.toLowerCase();
             const emailReg = /^[a-z0-9._]+@[a-z]+\.[a-z]{2,}$/;
             if (emailReg.test(email_input.value)) {
                 box_error(email_input, "green");
+                return true;
             } else {
                 box_error(email_input, "red");
                 return false;
@@ -750,7 +763,6 @@
         }
 
         function mobile_validation() {
-            // alert("mobile");
             let mobile_input = document.getElementById("mobile");
             const mobilereg = /^[6789][0-9]{9}$/;
             if (mobilereg.test(mobile_input.value)) {
@@ -763,42 +775,67 @@
             }
         }
 
-        
+        function radio_validation() {
+            event.preventDefault();
+            radio_input = document.getElementsByName("radio");
+            radio_error = document.getElementById("radio_error");
+            for (let i = 0; i < radio_input.length; i++) {
+                if (radio_input[i].checked) {
+                    radio_error.innerText = ""
+                    return true;
+                }
+            }
+            radio_error.innerText = "select anyone to continue";
+            return false;
+        }
+
+        function checkbox_validation() {
+            event.preventDefault();
+            checkbox_input = document.getElementsByName("checkbox");
+            checkbox_error = document.getElementById("checkbox_error");
+            for (let i = 0; i < checkbox_input.length; i++) {
+                if (checkbox_input[i].checked) {
+                    console.log(checkbox_input.length);
+                    checkbox_error.innerText = "";
+                    return true;
+                }
+            }
+            checkbox_error.innerText = "Select Service You Need";
+            return false;
+        }
 
         function input_validation(feild_inputs) {
             let feild_count = feild_inputs.length;
             let feild_flag = 0;
-            for (i = 0; i < feild_inputs.length; i++) {
-                input = document.getElementById(feild_inputs[i]);
-                validate_funcation = feild_inputs[i] + "_validation()";
-                alert(feild_inputs[i]);
-
+            for (let i = 0; i < feild_inputs.length; i++) {
+                let input = document.getElementById(feild_inputs[i]);
+                let validate_funcation = feild_inputs[i] + "_validation()";
                 if (input.value == "") {
                     box_error(input, "red");
                 } else {
-                    // feild_flag += 1;
                     try {
-                        validation = eval(validate_funcation);
+                        let validation = eval(validate_funcation);
                         console.log(validate_funcation + [i]);
                         if (validation) {
                             console.log(validate_funcation + [i] + "work aguthu");
                             box_error(input, "lightgreen");
+                            feild_flag = feild_flag + 1;
                         }
                     } catch {
+                        console.log("Function Error (not found)");
                         box_error(input, "lightgreen");
-                        console.log("Function Error");
+                        feild_flag = feild_flag + 1;
                     } finally {
                         console.log("finaly" + [i])
                     }
                 }
             }
-            return feild_count === feild_flag;
-            // if (feild_count == feild_flag) {
-            //     return true;
-            // } else {
-            //     return false;
-
-            // }
+            console.log(feild_flag);
+            if (feild_count === feild_flag) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
 
