@@ -44,3 +44,49 @@ function validation() {
     // }else{
     // }
 }
+
+
+
+//update code 
+function box_error(box, color) {
+    box.style.borderWidth = "2px";
+    box.style.borderColor = color;
+    box.style.outline = "none";
+}
+
+function input_validation(feild_inputs) {
+    for (i = 0; i < feild_inputs.length; i++) {
+        input = document.getElementById(feild_inputs[i]);
+        error = input.getAttribute("placeholder");
+        input_error = document.getElementById(feild_inputs[i] + "_error");
+        validate_funcation = feild_inputs[i] + "_validation()";
+        if (input.value == "") {
+            box_error(input, "red");
+        } else {
+            box_error(input, "green");
+            if (validate_funcation != "") {
+                eval(validate_funcation);
+                console.log(validate_funcation);
+            }
+        }
+    }
+}
+
+
+//submit function using addListenser
+
+let submit = document.getElementById("submit");
+submit.addEventListener("click", function () {
+    event.preventDefault();
+    let my_form = document.getElementById("my_form")[0];
+    feild_inputs = ["name", "email", "mobile", "message"];
+    if (input_validation(feild_inputs)) {
+        console.log('submit');
+        my_form.submit();
+    }
+});
+
+// using JQuery
+$("#submit").click(function () {
+    //jQuery
+})
