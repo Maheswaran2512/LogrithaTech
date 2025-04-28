@@ -8,9 +8,18 @@
     <title>Resume</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
+        :root {
+            --primary: #a0aecd;
+            --primary_shadow: #b5bed1;
+        }
+
         * {
             margin: 0;
             padding: 0;
+        }
+
+        html{
+            scroll-behavior: smooth;
         }
 
         .header {
@@ -19,14 +28,14 @@
             /* height: 80px; */
             height: 70px;
             border-radius: 5px;
-            background-color: #a0aecd;
+            background-color: var(--primary);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1);
-            box-shadow: 0px 10px 50px #a0aecd;
+            /* box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1); */
+            box-shadow: 0px 10px 50px var(--primary);
         }
 
         .nav {
@@ -94,8 +103,8 @@
             gap: 25px;
         }
 
-        .link a{
-            color: #a4b5db;
+        .link a {
+            color: var(--primary);
             font-weight: bold;
             text-decoration: none;
         }
@@ -106,30 +115,37 @@
             justify-content: center;
             align-items: center;
         }
+        .description{
+            text-align: center;
+        }
 
-        h1+figure{
+        h1+figure {
             display: flex;
             justify-content: center;
             /* background-color: red; */
             padding: 20px;
         }
-        .my_img{
+
+        .my_img {
             border: 0.1px solid rgb(243, 243, 253);
-            box-shadow: 0px 0px 30px rgb(167, 167, 197);
+            box-shadow: 0px 0px 30px var(--primary);
             border-radius: 50%;
+            transition-duration: 0.3s;
         }
-        .my_img:hover{
+
+        .my_img:hover {
             box-shadow: 0px 0px 30px rgb(224, 224, 224);
         }
 
         .skill_style {
             display: grid;
             /* grid-template-columns: 300px 300px 300px 300px 300px 300px 300px; */
-            grid-template-columns: repeat(7,300px);
+            grid-template-columns: repeat(7, 300px);
             /* margin-top: 10px; */
             gap: 10px;
             overflow: scroll;
             scrollbar-width: none;
+            padding: 5px 10px;
         }
 
         .skill_style>div {
@@ -137,13 +153,13 @@
             margin: 10px 5px;
             flex-grow: 1;
             border-radius: 10px;
-            border: 1px solid rgb(182, 144, 218);
-            box-shadow: 0px 0px 10px 0px #a0aecd;
+            border: 1px solid var(--primary_shadow);
+            box-shadow: 5px 5px 10px 0px var(--primary);
             box-sizing: border-box;
+            transition-duration: 0.3s;
             /* flex-shrink: 1; */
             /* align-items: stretch; */
         }
-
 
         .skill_style>div li {
             text-indent: 10px;
@@ -152,6 +168,7 @@
         article {
             border: 1px solid lightblue;
             background-color: #dfe9ff;
+            box-shadow: 5px 5px 10px var(--primary_shadow);
             padding: 15px;
             border-radius: 30px;
             margin: 10px 0px;
@@ -200,10 +217,10 @@
         }
 
         #project_list {
-            margin: 0px 100px;
+            margin: 20px 100px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
         #project_list h3 {
@@ -247,12 +264,36 @@
             color: red;
         }
 
+        .form_data>label {
+            flex-basis: 100px;
+            font-weight: bold;
+        }
+
         .form_data {
             display: flex;
             align-items: center;
             gap: 20px;
             padding: 10px;
         }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--primary);
+            outline: none;
+            box-shadow: 0px 0px 40px var(--primary);
+        }
+
+        .form_data>input:focus {
+            border-color: aqua;
+        }
+
+        .form_data>textarea:focus {
+            border-color: aqua;
+        }
+
 
         .radio_form input {
             width: 20px;
@@ -320,6 +361,7 @@
             margin-top: 10px;
         }
 
+
         .checkbox_form>div>div>div {
             display: flex;
             align-items: center;
@@ -328,29 +370,6 @@
 
         .checkbox_form>div>input {
             width: fit-content;
-        }
-
-        .form_data>label {
-            flex-basis: 100px;
-            font-weight: bold;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #a0aecd;
-            outline: none;
-            box-shadow: 0px 0px 40px #a0aecd;
-        }
-
-        .form_data>input:focus {
-            border-color: aqua;
-        }
-
-        .form_data>textarea:focus {
-            border-color: aqua;
         }
 
         #submitbtn {
@@ -375,10 +394,10 @@
 
         .footer {
             height: 50px;
-            background-color: #a0aecd;
+            background-color: var(--primary);
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 72, 253, 0.1);
-            box-shadow: 0px 10px 50px #a0aecd;
+            box-shadow: 0px 10px 50px var(--primary);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -424,6 +443,7 @@
 
             .skill_style {
                 display: block;
+                /* padding: 10px; */
             }
 
             .d1 {
@@ -492,12 +512,24 @@
             }
 
             #project_list {
-                margin: 0px 0px;
+                margin: 20px 0px;
             }
 
             #form_container {
                 max-width: 100%;
                 padding: 2%;
+            }
+
+            .checkbox_form>div>div {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                column-gap: 0px;
+                margin-top: 10px;
+            }
+
+            .checkbox_form>div>div>div {
+                margin-left: 0px;
             }
 
             #submitbtn>span {
@@ -529,6 +561,7 @@
             <ul class="nav_list">
                 <a class="ancher1" href="#home">Home</a>
                 <a class="ancher1" href="#about">About</a></li>
+                <a class="ancher1" href="#skill">Skill</a></li>
                 <a class="ancher1" href="#experience">Experience</a>
                 <a class="ancher1" href="#projects">Projects</a>
                 <a class="ancher1" href="#contact">Contact</a>
@@ -665,6 +698,14 @@
                         water usage for farming, gardening, or landscaping. It monitors soil moisture levels and
                         controls water flow based on real-time conditions, reducing water waste and ensuring
                         efficient irrigation.</p>
+                </div>
+                <div class="project_box">
+                    <h3>Web Interface Development</h3>
+                    <p>Tools: HTML, CSS</p>
+                </div>
+                <div class="project_box">
+                    <h3>Web Interface Development</h3>
+                    <p>Tools: HTML, CSS</p>
                 </div>
                 <div class="project_box">
                     <h3>Web Interface Development</h3>
