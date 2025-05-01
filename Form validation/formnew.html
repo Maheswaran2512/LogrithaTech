@@ -112,7 +112,9 @@
                 </div>
                 <div class="form_data">
                     <input type="reset" value="Reset">
-                    <button type="submit" onclick="validation()"> Submit </button>
+                    <!-- <button type="submit" onclick="validation()"> Submit </button> -->
+                    <button type="submit" onclick="validation(event)">Submit</button>
+
 
                 </div>
                 <div>
@@ -186,7 +188,6 @@
                 name_input.value = name_input.value.toUpperCase();
                 name_error.innerText = "";
                 input_error(name_input, "lightgreen");
-
             } else {
                 name_error.innerText = "INVALID INPUT";
                 input_error(name_input, "red");
@@ -203,19 +204,20 @@
 
 
             const emailReg = /^[a-z0-9._]+@[a-z]+\.[a-z]{2,}$/;
-            if (email_input == "") {
+            // if (email_input == "") {
 
-            }
+            // }
+            console.log("email");
             if (emailReg.test(email_input.value)) {
                 input_error(email_input, "lightgreen");
                 email_error.innerText = "Valid email";
                 text_error(email_error, "green");
-                return true;
+                console.log("email true");
             } else {
                 email_error.innerText = "Enter valid mail id";
                 input_error(email_input, "red");
                 text_error(email_error, "red");
-                return false;
+                console.log("email false");
             }
 
         }
@@ -242,25 +244,31 @@
             let password_error = document.getElementById("password_error");
             let c_password_error = document.getElementById("c_password_error");
             const passrex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+            errors = true;
             if (password.value == "") {
                 password_error.innerText = "Enter Password";
                 text_error(password_error, "red");
                 input_error(password, "red");
+                errors = false;
             } else if (!passrex.test(password.value)) {
                 password_error.innerText = "password must contains Uppercase LowerCase number spl";
+                errors = false;
             } else {
                 password_error.innerText = "";
             }
+
             if (c_password.value == "") {
                 // alert("if");
                 c_password_error.innerText = "Enter Confirm Password";
                 text_error(c_password_error, "red");
                 input_error(c_password, "red");
-
+                errors = false;
             } else {
                 // alert("error")
                 c_password_error.innerText = "";
             }
+
             if (password.value != "" && c_password.value != "") {
                 if (password.value == c_password.value) {
                     c_password_error.innerText = "Valid*";
@@ -272,12 +280,14 @@
                     text_error(c_password_error, "red");
                     input_error(c_password, "red");
                     input_error(password, "red");
+                    errors = false; 
                 }
             }
+            return errors;
         }
 
 
-        function validation() {
+        function validation(event) {
             event.preventDefault();
             console.log("validation func");
 
@@ -302,8 +312,10 @@
             }
 
             if (!input_validation("email", "Enter Your Email NEW")) {
+                console.log("email false v");
                 error = false;
-            } else{
+            } else {
+                console.log("email tru v");
                 email_case();
             }
 
@@ -339,9 +351,13 @@
                 console.log(error);
             }
 
+
             if (error) {
-                my_form.submit();
-                console.log('submit');
+
+                // my_form.submit();
+                // console.log('submit');
+                alert("working")
+                // loadDoc();
 
                 table = document.getElementById("table");
                 row = table.insertRow();
@@ -359,13 +375,36 @@
 
                 td = row.insertCell();
                 td.textContent = mobile_input.value;
+                // let table = document.getElementById("table");
+                // if (table) {
+                //     let row = table.insertRow();
+                //     let rowCount = table.rows.length; // Include headers
+
+                //     row.insertCell().textContent = rowCount;
+                //     row.insertCell().textContent = name_input.value;
+                //     row.insertCell().textContent = email_input.value;
+                //     row.insertCell().textContent = mobile_input.value;
+                // } else {
+                //     console.error("Table not found!");
+                // }
+
 
             }
         }
 
 
     </script>
-
+    <script>
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                // document.getElementById("demo").innerHTML = this.responseText;
+                alert(this.responseText);
+            }
+            xhttp.open("GET", "valid.php", true);
+            xhttp.send();
+        }
+    </script>
 </body>
 
 </html>

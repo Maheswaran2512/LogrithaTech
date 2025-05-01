@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TooDooList Concept</title>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="jquery.js"></script>
     <style>
         * {
@@ -205,7 +205,7 @@
         function complete(index) {
             alert(index);
             table = document.getElementById("table");
-            table.(index);
+            table.index;
             // changeSno();
         }
         
@@ -222,8 +222,8 @@
             alert(sno.length);
             for (i = 0; i < sno.length; i++) {
                 sno[i].innerText = (i+1);
-                button[i].setAttribute("onclick","Delete("+(i+1)+")");
-                complete[i].setAttribute("onclick","complete("+(i+1)+")");
+                button[i].setAttribute("onclick","Delete("+(i+1)+")");          
+              // complete[i].setAttribute("onclick","complete("+(i+1)+")");
             }
         }
 

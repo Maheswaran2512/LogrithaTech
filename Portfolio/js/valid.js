@@ -6,17 +6,32 @@ submit.addEventListener("click", function () {
     feild_inputs = ["name", "email", "mobile", "message"];
     // if ((radio_validation() && checkbox_validation()) && input_validation(feild_inputs) ) {
     if (input_validation(feild_inputs) && radio_validation() && checkbox_validation()) {
-    // if (input_validation(feild_inputs)) {
+        // if (input_validation(feild_inputs)) {
         alert("Message Send Successfully \n\n Our Team will Reach you soon...")
-        document.getElementById("success").innerText = "We will ReachYou Soon";
-        console.log("submit");
+        // document.getElementById("success").innerText = "We will ReachYou Soon";
+        // console.log("submit");
         my_form.submit();
+        // loadDoc();
+
     } else {
         console.log("error");
     }
     // feild_inputs.value="";
 });
-// emailjs.init('ixPPgpfnPjX6KgqX1');
+
+
+function loadDoc() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        // document.getElementById("demo").innerHTML = this.responseText;
+        alert(this.responseText);
+    }
+    xhttp.open("GET", "valid.php", true);
+    xhttp.send();
+}
+
+// e
+// mailjs.init('ixPPgpfnPjX6KgqX1');
 // const templateParams = {
 //     from_name: document.getElementById('name').value,
 //     from_email: document.getElementById('email').value,

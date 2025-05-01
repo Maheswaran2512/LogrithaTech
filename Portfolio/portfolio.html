@@ -224,13 +224,13 @@
         <section class="contact" id="contact">
             <h1 class="heading">Contact Me</h1>
             <p class="description">Feel free to reach out via email or LinkedIn.</p>
-            <!-- form starts -->
+            <!-- form sta'rts -->
             <form action="http://localhost/portfolio/valid.php" id="my_form" method="get">
                 <div id="form_container">
                     <div id="form_datas">
                         <div class="form_data">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="user_name" placeholder="Enter Your Name" />
+                            <input type="text" id="name" name="name" placeholder="Enter Your Name" />
                         </div>
                         <div class="form_data">
                             <label for="email">Email</label>
@@ -327,6 +327,17 @@
 
     <!-- script start -->
     <script src="js/valid.js"></script>
+    <!-- <script>
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                // document.getElementById("demo").innerHTML = this.responseText;
+                alert(this.responseText);
+            }
+            xhttp.open("GET", "new.txt", true);
+            xhttp.send();
+        }
+    </script> -->
     <!-- script end -->
 
 </body>
