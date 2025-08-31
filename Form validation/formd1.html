@@ -20,7 +20,7 @@
 
     <h1 align="center">Registration Form</h1>
     <div>
-        <form action="http://localhost/Maheswaran/validation.php" method="get">
+        <form action="http://localhost/Maheswaran/index.php" id="my_form" method="get">
             <div id="form_container">
                 <div class="form_input">
                     <div>
@@ -61,7 +61,7 @@
                 <div class="form_input">
                     <input type="reset" value="reset">
                     <!-- <input type="submit" id="submit" onclick="Validation()"> -->
-                    <button onclick="Validation()"> Submit </button>
+                    <button type=submit onclick="Validation()"> Submit </button>
                 </div>
             </div>
         </form>
@@ -98,67 +98,102 @@
 
             errors = 0;
 
-            if (name == '') {   
-                // alert("ENter Your Name");
-                $("#name_error").text("Enter Your name");
-                // document.getElementById("name_error").innerText = "Enter Your Name";
-                errors = errors + 1;
-                name_error.style.color = "red";
-            } else {
-                document.getElementById("name_error").innerText = "";
-            }
+            // if (name == '') {
+            //     // alert("ENter Your Name");
+            //     $("#name_error").text("Enter Your name");
+            //     // document.getElementById("name_error").innerText = "Enter Your Name";
+            //     errors = errors + 1;
+            //     name_error.style.color = "red";
+            // } else {
+            //     document.getElementById("name_error").innerText = "";
+            // }
 
-            if (email == '') {
-                // alert("Enter Your Email");
-                document.getElementById("email_error").innerText = "Enter Your Email";
-                errors = errors + 1;
-            } else {
-                document.getElementById("email_error").innerText = "";
-            }
+            // if (email == '') {
+            //     // alert("Enter Your Email");
+            //     document.getElementById("email_error").innerText = "Enter Your Email";
+            //     errors = errors + 1;
+            // } else {
+            //     document.getElementById("email_error").innerText = "";
+            // }
 
-            if (mobile == '') {
-                // alert("enter your mobile");
-                document.getElementById("mobile_error").innerText = "Enter Mobile No";
-                errors = errors + 1;
-            } else {
+            // if (mobile == '') {
+            //     // alert("enter your mobile");
+            //     document.getElementById("mobile_error").innerText = "Enter Mobile No";
+            //     errors = errors + 1;
+            // } else {
 
-                if (mobile.length != 10) {
-                    document.getElementById("mobile_error").innerText = "Plz Enter Valid Mobile No.";
+            //     if (mobile.length != 10) {
+            //         document.getElementById("mobile_error").innerText = "Plz Enter Valid Mobile No.";
 
-                } else {
-                    document.getElementById("mobile_error").innerText = "";
-                    // digit validation                    
+            //     } else {
+            //         document.getElementById("mobile_error").innerText = "";
+            //         // digit validation                    
 
-                }
-            }
+            //     }
+            // }
 
-            if (password == '') {
-                // alert("Enter Password");
-                document.getElementById("password_error").innerText = "Enter Password";
-                errors = errors + 1;
-            } else {
-                document.getElementById("password_error").innerText = "";
-            }
+            // if (password == '') {
+            //     // alert("Enter Password");
+            //     document.getElementById("password_error").innerText = "Enter Password";
+            //     errors = errors + 1;
+            // } else {
+            //     document.getElementById("password_error").innerText = "";
+            // }
 
-            if (c_password == '') {
-                // alert("Re-Enter Password");
-                document.getElementById("cpass_error").innerText = "Enter Confrim Password";
-                errors = errors + 1;
-            } else {
-                document.getElementById("cpass_error").innerText = "";
-            }
+            // if (c_password == '') {
+            //     // alert("Re-Enter Password");
+            //     document.getElementById("cpass_error").innerText = "Enter Confrim Password";
+            //     errors = errors + 1;
+            // } else {
+            //     document.getElementById("cpass_error").innerText = "";
+            // }
 
-            if (password != '' && c_password != '') {
-                if (password != c_password) {
-                    // alert("wrong Password");
-                    document.getElementById("cpass_error").innerText = "Invalid Password";
-                    errors = errors + 1;
-                }
-            }
+            // if (password != '' && c_password != '') {
+            //     if (password != c_password) {
+            //         // alert("wrong Password");
+            //         document.getElementById("cpass_error").innerText = "Invalid Password";
+            //         errors = errors + 1;
+            //     }
+            // }
 
             if (errors == 0) {
                 alert("success");
-                // event.preventDefault();
+                event.preventDefault();
+                
+                form = document.getElementById("my_form");
+                form_data = new FormData(form);
+                parameters = new URLSearchParams(form_data).toString();
+                // console.log(parameters);
+                // let parameters = "?name=" + name + "&email=" + email + "&mobile=" + mobile;
+
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function () {
+                    // alert(this.responseText);
+                    let result = this.responseText;
+                    // alert(result+"1");
+                    result = JSON.parse(result);
+                    // alert(result+"2");
+                    if (result.name_error != "") {
+                        name_error.innerText = result.name_error;
+                    }
+                    if (result.email_error != "") {
+                        email_error.innerText = result.email_error;
+                    }
+                    if (result.mobile_error != "") {
+                        mobile_error.innerText = result.mobile_error;
+                    }
+                    // alert(result.name_error);
+                    // alert(result.email_error);
+                    // alert(result.mobile_error);
+                    if(result.success!=""){
+                        alert(result.success);
+                    }
+                        
+                }
+                xhttp.open("GET", "http://localhost/Maheswaran/index.php?" + parameters, true);
+                xhttp.send();
+
+
 
             } else {
                 event.preventDefault();

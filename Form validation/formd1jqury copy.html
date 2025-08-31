@@ -113,7 +113,7 @@
                 // number_input.style.outline="none";
             }
         }
-        
+
 
         function Validation() {
             event.preventDefault();
@@ -124,7 +124,6 @@
             let c_password = $("#c_password").val();
             errors = true;
             const num_valid = /^[0-9]{10}$/;
-
 
             if (name == '') {
                 $("#name_error").text("Enter Your name");
@@ -137,6 +136,7 @@
             if (email == '') {
                 $("#email_error").text("Enter Your Email");
                 errors = false;
+                email_error.style.color = "red";
             } else {
                 $("#email_error").text("");
             }
@@ -144,12 +144,14 @@
             if (mobile == '') {
                 $("#mobile_error").text("Entter Mobile No.");
                 errors = false;
+                mobile_error.style.color = "red";
             } else {
                 if (mobile.length != 10) {
-
                     $("#mobile_error").text("enter 10 digit ");
+                    mobile_error.style.color = "red";
                 } else if (!num_valid.test(mobile)) {
                     $("#mobile_error").text("Enter valid number");
+                    mobile_error.style.color = "red";
                 } else {
                     $("#mobile_error").text("");
                 }
@@ -158,6 +160,7 @@
             if (password == '') {
                 $("#password_error").text("Enter Password");
                 errors = false;
+                password_error.style.color = "red";
             } else {
                 $("#password_error").text("");
             }
@@ -165,6 +168,7 @@
             if (c_password == '') {
                 $("#cpass_error").text("Enter Confrim Password");
                 errors = false;
+                cpass_error.style.color = "red";
             } else {
                 $("#cpass_error").text("");
             }
@@ -173,6 +177,7 @@
                 if (password != c_password) {
                     $("#cpass_error").text("Invalid Password");
                     errors = false;
+                    cpass_error.style.color = "red";
                 }
             }
 

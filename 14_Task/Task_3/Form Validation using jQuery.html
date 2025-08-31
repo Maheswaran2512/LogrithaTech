@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="formd1.css">
+    <style>
+        span {
+            font-size: small;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- <input type="text" name="name" id="name"> -->
+    <!-- <input type="text" id="name" name="name" onclick="name_validation()"> -->
+
+
+    <h1 align="center">Registration Form</h1>
+    <div>
+        <span id="success"></span>
+        <form action="#" id="my_form" method="post">
+            <div id="form_container">
+                <div class="form_input">
+                    <div>
+                        <label for="name">Name</label>
+                        <span id="name_error"></span>
+                    </div>
+                    <input type="text" name="name" id="name" oninput="name_upper()" placeholder="Enter Your Name">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="email">Email</label>
+                        <span id="email_error"></span>
+                    </div>
+                    <input type="email" name="email" id="email" oninput="email_lower()" placeholder="Enter Your Email">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="mobile">Mobile</label>
+                        <span id="mobile_error"></span>
+                    </div>
+                    <input type="text" name="mobile" id="mobile" oninput="mobile_len()"
+                        placeholder="Enter Your Mobile Nummber">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="password">Password</label>
+                        <span id="password_error"></span>
+                    </div>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="form_input">
+                    <div>
+                        <label for="c_password">Confrim Password</label>
+                        <span id="cpass_error"></span>
+                    </div>
+                    <input type="password" name="c_password" id="c_password" placeholder="Confirm Password">
+                </div>
+                <div class="form_input">
+                    <input type="reset" value="reset">
+                    <button onclick="Validation()"> Submit </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+
+        function name_upper() {
+            let name = $("#name").val();
+            $("#name").val(name.toUpperCase());
+        }
+
+        function email_lower() {
+            let email = $("#email").val();
+            $("#email").val(email.toLowerCase());
+        }
+
+        function mobile_len() {
+            let mobile = $("#mobile").val();
+            if (mobile.length != 10) {
+                $("#mobile").css("border-color", "red");
+                $("#mobile").css("border-width", "2px");
+                $("#mobile").css("outline", "none");
+            }
+
+            else {
+                $("#mobile").css("border-color", "green");
+                $("#mobile").css("border-width", "2px");
+            }
+        }
+
+        function mobile_validation() {
+            number_input = document.getElementById("number");
+            var number_error = document.getElementById("number_error");
+            mobilereg = /^[0-9]{10}$/;
+            if (!mobilereg.test(number_input.value)) {
+                // alert("invalid mobile no");
+                number_error.innerText = "invalid mobile no";
+                error_color(number_input, "red");
+                // number_input.style.borderWidth="2px";
+                // number_input.style.borderColor="red";
+                // number_input.style.outline="none";
+            } else {
+                number_error.innerText = "";
+                error_color(number_input, "green")
+                // number_input.style.borderWidth="2px";
+                // number_input.style.borderColor="green";
+                // number_input.style.outline="none";
+            }
+        }
+
+
+        function Validation() {
+            event.preventDefault();
+            let name = $("#name").val();
+            let email = $("#email").val();
+            let mobile = $("#mobile").val();
+            let password = $("#password").val();
+            let c_password = $("#c_password").val();
+            errors = true;
+            const num_valid = /^[0-9]{10}$/;
+
+            if (name == '') {
+                $("#name_error").text("Enter Your name");
+                errors = false;
+                name_error.style.color = "red";
+            } else {
+                $("#name_error").text("");
+            }
+
+            if (email == '') {
+                $("#email_error").text("Enter Your Email");
+                errors = false;
+                email_error.style.color = "red";
+            } else {
+                $("#email_error").text("");
+            }
+
+            if (mobile == '') {
+                $("#mobile_error").text("Entter Mobile No.");
+                errors = false;
+                mobile_error.style.color = "red";
+            } else {
+                if (mobile.length != 10) {
+                    $("#mobile_error").text("enter 10 digit ");
+                    mobile_error.style.color = "red";
+                } else if (!num_valid.test(mobile)) {
+                    $("#mobile_error").text("Enter valid number");
+                    mobile_error.style.color = "red";
+                } else {
+                    $("#mobile_error").text("");
+                }
+            }
+
+            if (password == '') {
+                $("#password_error").text("Enter Password");
+                errors = false;
+                password_error.style.color = "red";
+            } else {
+                $("#password_error").text("");
+            }
+
+            if (c_password == '') {
+                $("#cpass_error").text("Enter Confrim Password");
+                errors = false;
+                cpass_error.style.color = "red";
+            } else {
+                $("#cpass_error").text("");
+            }
+
+            if (password != '' && c_password != '') {
+                if (password != c_password) {
+                    $("#cpass_error").text("Invalid Password");
+                    errors = false;
+                    cpass_error.style.color = "red";
+                }
+            }
+
+            if (errors) {
+                alert("success");
+                my_form = $("#my_form");
+                my_form.submit();
+            } else {
+                // event.preventDefault();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
